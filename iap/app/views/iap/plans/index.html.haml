@@ -1,0 +1,12 @@
+%h1 Incident Action Planning
+
+%h3 
+  Draft Plan
+  %small=link_to 'Create New', new_resource_path
+=render 'collection', collection: collection.draft
+%h3 Upcoming Plan
+=render 'collection', collection: collection.upcoming
+%h3 Current Plan
+=render 'collection', collection: collection.current
+%h3 Past Plans
+=render 'collection', collection: collection.past

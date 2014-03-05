@@ -1,0 +1,8 @@
+=semantic_form_for resource, url: environment_sitrep_config_path(parent), builder: FormtasticBootstrap::FormBuilder, class: 'form' do |f|
+  =f.input :allow_unauthenticated_submit
+  .prompts
+    - idx = 0
+    =f.fields_for :prompts do |prompt|
+      =render 'prompt_fields', f: prompt, ordinal: idx
+    =link_to_add_association 'add prompt', f, :prompts
+  =f.actions

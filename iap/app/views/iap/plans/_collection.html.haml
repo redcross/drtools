@@ -1,0 +1,21 @@
+%table.table.table-condensed
+  %tr
+    %th Plan #
+    %th Op Period
+    %th Files
+    %th Approver
+    %th Status
+    %th Actions
+  - collection.each do |resource|
+    %tr
+      %td=resource.number
+      %td
+      %td
+        - resource.plan_attachments.each do |att|
+          =link_to att.title, att.file.expiring_url
+      %td
+        = resource.approver_name
+        = resource.approver_title
+      %td=resource.humanized_status
+      %td
+        =link_to 'View', resource_path(resource)

@@ -1,0 +1,41 @@
+%h1
+  =@report.incident_name
+  =@report.scope
+  =@report.cob_date
+%table.table.table-condensed.report-table.table-bordered
+  %thead
+    %tr
+      %th Line
+      %th Name
+      %th Pd
+      %th Ttl
+      %th *
+      %th Line
+      %th Name
+      %th Pd
+      %th Ttl
+      %th *
+  %tbody
+    - lines = @report.lines.order{line_number}.to_a
+    - lines_in_first_col = 46
+    - lines_in_first_page = 82
+    - lines_by_num = lines.group_by &:line_number
+    - line_descriptions = Dsars::LineDescription.where{report_type=='5266'}.group_by(&:line_number)
+    - (1..lines_in_first_col).each do |line_first_idx|
+      %tr
+        - line = lines_by_num[line_first_idx].first
+        - desc = line_descriptions[line_first_idx].first
+        %td=link_to line.line_number, report_chart_path(parent, @report.report_number, line.line_number)
+        %td=desc.name
+        %td.val=format(line.period, desc.format)
+        %td.val=format(line.total, desc.format)
+        %td.end-col
+        - line_second_idx = line_first_idx + lines_in_first_col
+        - if line_second_idx <= lines_in_first_page
+          - line = lines_by_num[line_second_idx].first
+          - desc = line_descriptions[line_second_idx].first
+          %td=link_to line.line_number, report_chart_path(parent, @report.report_number, line.line_number)
+          %td=desc.name
+          %td.val=format(line.period, desc.format)
+          %td.val=format(line.total, desc.format)
+          %td

@@ -1,0 +1,37 @@
+.header.well.well-sm.text-center
+  .pull-left=link_to 'Up One Level', parent_folder_path
+  .pull-right=link_to 'Switch User', switch_user_environment_plan_attachments_path(environment, parent, return_to: request.original_url)
+  Logged in as #{oauth_user}
+  .clearfix
+%h2 Folders
+%table.table.table-condensed
+  %tr
+    %th Folder Name
+  - @folders.each do |f|
+    %tr 
+      %td=link_to f['title'], list_folder_path(f['id'])
+
+%h2 Files
+%table.table.table-condensed
+  %tr
+    %th Title
+    %th File Type
+    %th Description
+  - @files.each do |f|
+    %tr{class: !is_valid(f) && 'danger'}
+      %th=f['title']
+      %td
+        =image_tag f['iconLink']
+        =content_type_mapping f['mimeType']
+      %td=f['description']
+      %td
+        -if is_valid(f)
+          =link_to "Attach", assemble_path(f['id'])
+        -else
+          File is not a supported type.
+-if all_valid
+  -if params[:folder_id]
+    %h2 Compile Folder
+    =link_to "Compile the documents in this folder.", assemble_path
+-else
+  You can't download because at least one file is not a supported Google Docs or PDF format.

@@ -1,0 +1,13 @@
+table.report-table {
+  td {
+    padding: 2px 5px !important;
+  }
+  .val {
+    text-align: right;
+  }
+  .end-col {
+    border-right: 2px solid #ddd;
+  }
+
+  font-size: 90%;
+}

@@ -1,0 +1,11 @@
+=form_tag url_for(action: :input), method: :post, class: 'form' do
+  =label_tag :dr_number
+  =text_field_tag :dr_number, @dr_number
+  %br
+  =label_tag :data_since
+  =text_field_tag :data_since, @since_date
+  %br
+  =label_tag :consolidated_only
+  =check_box_tag :consolidated_only, '1', @consolidated_only
+  %br
+  =submit_tag 'Load', class: 'btn btn-primary'

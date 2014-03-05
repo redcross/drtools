@@ -1,0 +1,24 @@
+- reports_by_date = @reports.group_by{|r| r.report_number}
+- dates = reports_by_date.keys.sort
+- report_orders = @reports.map{|r| [r.scope, r.unit_name, r.county_name] }.uniq.sort
+- reports_by_area = @reports.group_by{|r| [r.scope, r.unit_name, r.county_name] }
+- lines_by_report = @lines.group_by{|l| l.report5266_id }
+%table
+  %tr
+    %td #
+    %td Date
+    - report_orders.each do |attrs|
+      %td(colspan="2")=safe_join attrs, "<br />".html_safe
+  - dates.each do |report_number|
+    %tr
+      - reports = reports_by_date[report_number]
+      %td=report_number
+      %td=reports.first.cob_date
+      - report_orders.each do |attrs|
+        - rep = reports.detect{|r| [r.scope, r.unit_name, r.county_name] == attrs}
+        - unless rep
+          %td(colspan="2")
+          - next
+        - line = lines_by_report[rep.id].first
+        %td=line.period
+        %td=line.total

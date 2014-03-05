@@ -1,0 +1,20 @@
+=semantic_form_for [parent, resource], builder: FormtasticBootstrap::FormBuilder do |f|
+  =f.input :date
+  .row
+    .col-sm-6
+      =f.input :activity
+    .col-sm-6
+      =f.input :territory
+  .row
+    .col-sm-6
+      =f.input :submitter_name
+    .col-sm-6
+      =f.input :submitter_title
+  - idx = 0
+  =f.fields_for :responses do |resp|
+    =resp.hidden_field :title
+    =resp.hidden_field :ordinal, {value: idx}
+    =resp.input :response, as: :text, input_html: {rows: 5}, label: resp.object.title
+    - idx += 1
+
+  =f.action :submit, label: 'Submit SitRep', button_html: {class: 'btn btn-primary'}

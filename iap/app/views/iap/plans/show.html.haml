@@ -1,0 +1,55 @@
+.page-title
+  %h1
+    =parent.name
+    \-
+    IAP #{resource.number}
+%table.table
+  %tr
+    %th Plan Number
+    %td=resource.number
+  %tr
+    %th Op Period Start
+    %td=resource.period_start
+  %tr
+    %th Op Period End
+    %td=resource.period_end
+  %tr
+    %th Status
+    %td=resource.humanized_status
+  %tr
+    %th Approved By
+    %td=resource.approver_name
+  %tr
+    %th Approver Title
+    %td=resource.approver_title
+  %tr
+    %th Actions
+    %td
+      -unless resource.approved?
+        =link_to 'Edit', edit_resource_path, class: "btn btn-primary btn-sm"
+        =link_to 'Approve', new_environment_plan_approval_path(*association_chain, resource), class: "btn btn-primary btn-sm"
+      -else
+        =link_to 'Unapprove', environment_plan_approval_path(*association_chain, resource), class: "btn btn-danger btn-sm", method: :delete
+      -if editable?
+        =link_to 'Delete', resource_path, class: "btn btn-danger btn-sm", data: {method: :delete, confirm: "Really delete this plan?  All attachments will be removed."}
+%h2 
+  Attachments
+  -if editable?
+    %small=link_to 'Add Attachment', new_environment_plan_attachment_path(parent, resource)
+%table.table
+  %tr
+    %th Type
+    %th Audience
+    %th Name
+    /%th Type
+    %th Actions
+  - resource.plan_attachments.each do |att|
+    %tr
+      %td=att.humanized_attachment_type
+      %td=att.humanized_audience
+      %td=link_to att.title, att.file.expiring_url
+      /%td=att.file.content_type
+      %td
+        -if editable?
+          =link_to 'Edit'
+          =link_to 'Delete', environment_plan_attachment_path(parent, resource, att), data: {method: :delete, confirm: 'Are you sure you want to delete this attachment?'}

@@ -1,0 +1,25 @@
+%h1
+  =parent.name
+  Sitreps
+  =link_to "Submit Situation Report", new_resource_path(parent), class: "btn btn-primary"
+  =link_to "Configure", edit_environment_sitrep_config_path(parent), class: 'btn'
+%table.table.table-condensed
+  %thead
+    %tr
+      %th Date
+      %th Territory
+      %th Activity
+      %th Submitter
+      %th Submitted At
+      %th Actions
+  %tbody
+    - collection.each do |resource|
+      %tr
+        %td=resource.date
+        %td=resource.territory
+        %td=resource.activity
+        %td=resource.submitter_name
+        %td=resource.created_at
+        %td
+          =link_to 'Show', resource_path(resource), class: "btn btn-primary btn-xs"
+          =link_to 'Edit', edit_resource_path(resource), class: "btn btn-primary btn-xs"

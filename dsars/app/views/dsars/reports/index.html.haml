@@ -1,0 +1,13 @@
+%h1 DSARS - #{parent.name}
+=link_to "Import DSARS Reports", input_path
+%table.table
+  %thead
+    %tr
+      %th Report Number
+      %th COB Date
+  %tbody
+    - @reports.each do |rep|
+      %tr
+        %td=link_to rep.report_number, report_path(parent, rep.report_number)
+        %td=rep.cob_date
+        %td Re-Import Report

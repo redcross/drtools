@@ -1,0 +1,7 @@
+%h1 Approve IAP
+=semantic_form_for resource, url: resource_path, builder: FormtasticBootstrap::FormBuilder, html: {method: :post} do |f|
+  =f.inputs do
+    =f.input :approver_name
+    =f.input :approver_title
+  =f.actions do
+    =f.action :submit, label: "Approve IAP"

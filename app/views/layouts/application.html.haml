@@ -1,0 +1,47 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "DRTools"
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+
+
+  %body
+    %nav.navbar.navbar-responsive-top.navbar-default(role="navigation")
+      .container
+        .navbar-header
+          %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand(href="/") 
+            DRTools
+            %i beta
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            =render_breadcrumbs
+          -if current_user
+            %ul.nav.navbar-nav.navbar-right
+              %li
+                =link_to 'Logout', destroy_user_session_path, method: :delete 
+            %p.navbar-text.navbar-right
+              Signed in as #{current_user.first_name} #{current_user.last_name}
+
+    .container
+      .row
+        .col-lg-12
+          = bootstrap_flash
+          = yield
+      %footer
+        %br
+        %br
+        %br

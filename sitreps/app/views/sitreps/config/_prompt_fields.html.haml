@@ -1,0 +1,8 @@
+- f.object.ordinal ||= 100000
+.nested-fields
+  = f.inputs do
+    =f.hidden_field :ordinal
+    =f.input :title
+    =f.input :required, as: :boolean
+  .links
+    = link_to_remove_association "remove prompt", f

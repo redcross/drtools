@@ -1,0 +1,41 @@
+%h1 New Attachment from Google Drive
+=semantic_form_for resource, url: url_for, builder: FormtasticBootstrap::FormBuilder do |f|
+  =render 'iap/plan_attachments/fields', f: f
+  -if is_regular_file?
+    %h3 Drive File
+    %table.table
+      %tr
+        %th Name
+        %td=file['title']
+      %tr
+        %th Type
+        %td
+          =image_tag file['iconLink']
+          =content_type_mapping file['mimeType']
+      %tr
+        %th Notes
+        %td=file['description']
+      %tr
+        %th Thumbnail
+        %td=image_tag file['thumbnailLink']
+  -else
+    %h3 
+      Drive Files
+      %small Files will be merged in the order they appear here.
+    %table.table.table-condensed
+      %tr
+        %th Name
+        %th Type
+        %th Notes
+        %th Thumbnail
+      - files.each do |file|
+        %tr
+          %td=file['title']
+          %td
+            =image_tag file['iconLink']
+            =content_type_mapping file['mimeType']
+          %td=file['description']
+          %td=image_tag file['thumbnailLink']
+  =f.actions
+
+

@@ -1,0 +1,12 @@
+%h1=resource.name
+
+%ul
+  -if resource.enable_dashboard
+    %li=link_to "Dashboard", dashboard.dashboard_path(resource)
+  -if resource.enable_dsars
+    %li=link_to "DSARS", dsars.reports_path(resource)
+  -if resource.enable_iap
+    %li=link_to "Incident Action Plans", iap.environment_plans_path(resource)
+  -if resource.enable_sitreps
+    %li=link_to "Situation Reports", sitreps.environment_sitreps_path(resource)
+  %li Mapping

@@ -1,0 +1,4 @@
+=semantic_form_for resource, url: url_for(action: :create), builder: FormtasticBootstrap::FormBuilder do |f|
+  =render 'fields', f: f
+  =f.input :file, as: :file
+  =f.actions

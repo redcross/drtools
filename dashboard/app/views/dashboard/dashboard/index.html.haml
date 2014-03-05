@@ -1,0 +1,178 @@
+.row
+  .col-md-12
+    %h1 DR #{@report.dro_number} Dashboard
+.row
+  .col-md-12
+    %table.table.table-bordered.table-striped
+      %tr
+        %th Incident Name
+        %td=incident_name
+      /%tr
+      /  %td DSARS Incident #
+      /  %td=@report.incident_number
+      /%tr
+      /  %td CAS Incident #
+      /  %td
+      %tr
+        %th Incident Type
+        %td
+      %tr
+        %th Incident Date
+        %td
+      %tr
+        %th Reporting Frequency
+        %td
+          Daily
+          \-
+          =@report.cob_date
+      %tr
+        %th Job Director
+        %td
+      %tr
+        %th Service Delivery Plan
+        %td
+.row
+  .col-md-12
+    %h3 Casework
+    %table.table.table-bordered.table-striped
+      %tr
+        %th
+        %th Estimated Cases
+        %th Contacts
+        %th Cases Open (current)
+        %th Cases Closed (total)
+      %tr
+        %th Client Casework
+        %td=chart_link 55, total_value(55)
+        %td
+        %td=chart_link 60, period_value(60)
+        %td=[period_value(58),period_value(59)].compact.sum
+      %tr
+        %th Health Services
+        %td
+        %td=chart_link 75, total_value( 75)
+        %td=chart_link 77, period_value( 77)
+        %td=chart_link 78, total_value( 78)
+      %tr
+        %th Mental Health
+        %td
+        %td=chart_link 79, total_value(79)
+        %td=chart_link 81, period_value(81)
+        %td=chart_link 82, total_value(82)
+.row
+  .col-md-6
+    %h3 Staffing
+    %table.table.table-bordered.table-striped
+      %tr
+        %th(rowspan=2)
+        %th(colspan=2) Local
+        %th(colspan=2) Deployed
+      %tr
+        %th Period
+        %th Total
+        %th Period
+        %th Total
+      %tr
+        %th Volunteer
+        %td=chart_link 38, period_value( 38)
+        %td=chart_link 38, total_value( 38)
+        %td=chart_link 41, period_value( 41)
+        %td=chart_link 41, total_value( 41)
+      %tr
+        %th Employees
+        %td=chart_link 39, period_value( 39)
+        %td=chart_link 39, total_value( 39)
+        %td=chart_link 42, period_value( 42)
+        %td=chart_link 42, total_value( 42)
+      %tr
+        %th Overall
+        %td=chart_link 40, period_value( 40)
+        %td=chart_link 40, total_value( 40)
+        %td=chart_link 44, period_value( 44)
+        %td=chart_link 44, total_value( 44)
+  .col-md-6
+    %h3 Mass Care
+    %table.table.table-bordered.table-striped
+      %tr
+        %th
+        %th Period
+        %th Total
+      %tr
+        %th Shelters
+        %td=chart_link 1, period_value(1)
+        %td=chart_link 1, total_value( 1)
+      %tr
+        %th Shelter Registrations
+        %td=chart_link 16, period_value(16)
+        %td=chart_link 16, total_value( 16)
+      %tr
+        %th Shelter Stays
+        %td=chart_link 17, period_value(17)
+        %td=chart_link 17, total_value( 17)
+      %tr
+        %th Meals Served
+        %td=chart_link 18, period_value(18)
+        %td=chart_link 18, total_value( 18)
+.row
+  .col-md-12
+    %h3 Expenditures
+    %table.table.table-bordered.table-striped
+      %tr
+        %th Class
+        %th Description
+        %th 5266 Line
+        %th Period
+        %th Total
+      %tr
+        %th Class 1
+        %th Mass Care
+        %td 97
+        %td=chart_link 97, number_to_currency( period_value(97), precision: 0)
+        %td=chart_link 97, number_to_currency( total_value( 97), precision: 0)
+      %tr
+        %th Class 2
+        %th Personal Items
+        %td 83
+        %td=chart_link 83, number_to_currency( period_value(83), precision: 0)
+        %td=chart_link 83, number_to_currency( total_value( 83), precision: 0)
+      %tr
+        %th Class 3
+        %th Hotel, Rental Assistance
+        %td 84
+        %td=chart_link 84, number_to_currency( period_value(84), precision: 0)
+        %td=chart_link 84, number_to_currency( total_value( 84), precision: 0)
+      %tr 
+        %th Class 4
+        %th Beds, Bedding, Storage
+        %td 85
+        %td=chart_link 85, number_to_currency( period_value(85), precision: 0)
+        %td=chart_link 85, number_to_currency( total_value( 85), precision: 0)
+      %tr
+        %th Class 5
+        %th Health Needs
+        %td 88+89
+        %td=number_to_currency( [period_value(88),period_value(89)].compact.sum, precision: 0)
+        %td=number_to_currency( [total_value( 88),total_value( 89)].compact.sum, precision: 0)
+      %tr
+        %th
+        %th Total Direct Services
+        %td 92+97
+        %td=number_to_currency( [period_value(92),period_value(97)].compact.sum, precision: 0)
+        %td=number_to_currency( [total_value( 92),total_value( 97)].compact.sum, precision: 0)
+      %tr
+        %th
+        %th Total Indirect Expenditures
+        %td 141-92-97
+        %td=number_to_currency( period_indirect, precision: 0)
+        %td=number_to_currency( total_indirect, precision: 0)
+      %tr
+        %th
+        %th Operation Total Commitments
+        %td 141
+        %td=chart_link 141, number_to_currency( period_value(141), precision: 0)
+        %td=chart_link 141, number_to_currency( total_value( 141), precision: 0)
+      %tr
+        %th
+        %th Operation Approved Budget
+        %td(colspan=2)
+        %td $?

@@ -1,0 +1,238 @@
+4,1,Client Shelters,MC
+4,2,Fixed Feeding Sites,MC
+4,3,Kitchens,MC
+4,4,Bulk Distribution Sites,MC
+4,5,Warehouses,MC
+4,6,Individual Assistance Sites,MC
+4,7,Chapters Offering Individual Assistance w/ CAS,MC
+4,8,Emergency Aid Stations,MC
+4,9,Respite Centers,MC
+4,10,Chapter Call Centers,MC
+4,11,Staff Shelters,MC
+4,12,Staff Processing Centers,MC
+4,13,Staging Areas,MC
+4,14,EOCs Open/Activated,LG
+4,15,EOCs Supported by Red Cross,LG
+4,16,Shelter Registrations,MC
+4,17,Shelter Overnight Stays,MC
+4,18,Meals Served,MC
+4,19,Snacks Served,MC
+4,20,Vehicles Providing Mobile Feeding,MC
+4,21,Cleanup Kits Distributed,MC
+4,22,Comfort Kits Distributed,MC
+4,23,Bulk Items Distributed,MC
+4,24,Welfare Information Requests Received,MC
+4,25,Welfare Information Reuests Completed,MC
+4,26,Safe & Well Registrations,MC
+4,27,Staff Ill,SS
+4,28,Staff Injured,SS
+4,29,Staff Hospitalized,SS
+4,30,Staff Health Contacts,SS
+4,31,Staff Released for Medical Reasons,SS
+4,32,Training Sessions,SS
+4,33,Persons Given Training,SS
+4,34,Staff in Staff Shelters,SS
+4,35,Non-T&M Partner/Company Volunteers,SS
+4,36,Non-T&M ARC Affiliated Volunteers,SS
+4,37,Non-T&M Spontaneous Volunteers,SS
+4,38,Total Non-T&M Volunteers,SS
+4,39,Non-T&M ARC Employees,SS
+4,40,Total Non-T&M Staff,SS
+4,41,T&M ARC Volunteers,SS
+4,42,T&M ARC Employees,SS
+4,43,T&M Partner/Group Volunteers,SS
+4,44,Total T&M Staff,SS
+4,45,Non-T&M Temp Agency Hires,SS
+4,46,Grand Total All Staff,SS
+4,47,Nationally Owned ERVs,LOG
+4,48,ECRVs,LOG
+4,49,Nationally Owned Trailers,LOG
+4,50,Other National Vehicles,LOG
+4,51,Total National Vehicles,LOG
+4,52,Total Chapter Owned Vehicles,LOG
+4,53,Passenger Rental Vehicles,LOG
+4,54,Other Rental Vehicles,LOG
+4,55,Estimated Total Cases,CLS
+4,56,Cases Opened,CLS
+4,57,Cases Opened on Outreach,CLS
+4,58,Cases Closed with Financial Assistance,CLS
+4,59,Cases Closed with Service Only,CLS
+4,60,Cases Currently Open,CLS
+4,61,Client Returns,CLS
+4,62,Number of Clients Served in Cases,CLS
+4,63,Client Casework Home Visits Completed,CLS
+4,64,Client Casework Home Visits Pending,CLS
+4,65,Outreach Contacts,CLS
+4,66,Outreach Notes,CLS
+4,67,Jumpstart to Recovery Kits Distributed,CLS
+4,68,Recovery Booklets Distributed,CLS
+4,69,Chapter Hotline Calls,CLS
+4,70,Response Center Calls,CLS
+4,71,Verified Deaths,HS
+4,72,Verified Hospitalized,HS
+4,73,Verified Ill or Injured,HS
+4,74,Home or Hospital Visits Completed,HS
+4,75,Health Services Contacts,HS
+4,76,Health Services Form 2077,HS
+4,77,HS Form 1475 Open,HS
+4,78,HS Form 1475 Completed,HS
+4,79,Mental Health Contacts,MH
+4,80,DMH Form 2077,MH
+4,81,DMH Form 1475 Open,MH
+4,82,DMH Form 1475 Completed,MH
+4,92,CLS Total Relief Commitments,FIN
+4,109,Log/Tech Total Commitments,FIN
+4,123,Staffing Total Commitments,FIN
+4,136,DRO Total Relief Commitments,FIN
+4,141,DRO Total Operation Commitments,FIN
+2,1,Individual Assistance Sites,MC
+2,2,Chapters Offering Individual Assistance w/ CAS,MC
+2,3,Other Individual Asst. SDS,MC
+2,4,Total Individual Asst. SDS,MC
+2,5,Client Shelters,MC
+2,6,Staff Shelters,MC
+2,7,Fixed Feeding Sites,MC
+2,8,Bulk Distribution Sites,MC
+2,9,Respite Centers,MC
+2,10,Emergency Aid Stations,MC
+2,11,Kitchens,MC
+2,12,Warehouses,MC
+2,13,Staff Processing Centers,MC
+2,14,Staging Areas,MC
+2,15,Chapter Call Centers,MC
+2,16,Total Direct/Support SDS Open,MC
+2,17,Estimated Total Cases,CLS
+2,18,Cases Opened,CLS
+2,19,Cases Opened on Outreach,CLS
+2,20,Cases Closed with Financial Assistance,CLS
+2,21,Cases Closed with Service Only,CLS
+2,22,Cases Currently Open,CLS
+2,23,Client Returns,CLS
+2,24,Number of Clients Served in Cases,CLS
+2,25,Home Visits Completed,CLS
+2,26,Home Visits Pending,CLS
+2,27,Outreach Contacts,CLS
+2,28,Outreach Notes,CLS
+2,29,Chapter Hotline Calls,CLS
+2,30,Response Center Calls,CLS
+2,31,RC Referrals Forwarded to DRO,CLS
+2,32,Cases Generated from RC Referrals,CLS
+2,33,Verified Deaths,HS
+2,34,Verified Hospitalized,HS
+2,35,Verified Ill or Injured,HS
+2,36,Home or Hospital Visits Completed,HS
+2,37,Health Services Contacts,HS
+2,38,Health Services Form 2077,HS
+2,39,HS Form 1475 Open,HS
+2,40,HS Form 1475 Completed,HS
+2,41,Mental Health Contacts,MH
+2,42,DMH Form 2077,MH
+2,43,DMH Form 1475 Open,MH
+2,44,DMH Form 1475 Completed,MH
+2,45,Welfare Information Requests Received,MC
+2,46,Welfare Information Reuests Completed,MC
+2,47,Welfare Information Requests Pending,MC
+2,48,Staff Ill,SS
+2,49,Staff Injured,SS
+2,50,Staff Hospitalized,SS
+2,51,Staff Health Contacts,SS
+2,52,Staff Released for Medical Reasons,SS
+2,53,Training Sessions,SS
+2,54,Persons Given Training,SS
+2,55,# Staff Cards Issued,SS
+2,56,Staff in Staff Shelters,SS
+2,57,Non-T&M Partner/Company Volunteers,SS
+2,58,Non-T&M ARC Affiliated Volunteers,SS
+2,59,Non-T&M Spontaneous Volunteers,SS
+2,60,Total Non-T&M Volunteers,SS
+2,61,Non-T&M ARC Employees,SS
+2,62,Total Non-T&M Staff,SS
+2,63,T&M ARC Volunteers,SS
+2,64,T&M ARC Employees,SS
+2,65,T&M Partner/Group Volunteers,SS
+2,66,Total T&M Staff,SS
+2,67,Non-T&M Temp Agency Hires,SS
+2,68,Grand Total All Staff,SS
+2,69,Shelter Registrations,MC
+2,70,Shelter Overnight Stays,MC
+2,71,Meals Served,MC
+2,72,Snacks Served,MC
+2,73,Vehicles Providing Mobile Feeding,MC
+2,74,Cleanup Kits Distributed,MC
+2,75,Comfort Kits Distributed,MC
+2,76,Bulk Items Distributed,MC
+2,77,Chapter Owned Feeding Vehicles,LOG
+2,78,Chapter Owned Communications Vehicles,LOG
+2,79,Chapter Owned Logistics Vehicles,LOG
+2,80,Chapter Owned Trailers,LOG
+2,81,Other Chapter Owned Vehicles,LOG
+2,82,Total Chapter Owned Vehicles,LOG
+2,83,Nationally Owned ERVs,LOG
+2,84,Nationally Owned ECRVs,LOG
+2,85,Nationally Owned LIRVs,LOG
+2,86,Nationally Owned Trailers,LOG
+2,87,Other National Vehicles,LOG
+2,88,Total National Vehicles,LOG
+2,89,Passenger Rental Vehicles,LOG
+2,90,Number of Donated Vehicles,LOG
+2,91,Cleanup kits Shipped from GSD,LOG
+2,92,Comfort Kits Shipped from GSD,LOG
+2,93,Cots Shipped from GSD,LOG
+2,94,MRE/Heater Meals Shipped,LOG
+2,104,CLS Total Relief Commitments,FIN
+2,122,Log/Tech Total Commitments,FIN
+2,138,Staffing Total Commitments,FIN
+2,153,DRO Total Relief Commitments,FIN
+2,159,DRO Total Operation Commitments,FIN
+1,1,Individual Assistance Sites,CLS
+1,2,Estimated Total Cases,CLS
+1,3,Cases Opened,CLS
+1,4,Cases Closed with Financial Assistance,CLS
+1,5,Cases Closed with Service Only,CLS
+1,6,Cases Currently Open,CLS
+1,7,Home Visits Completed,CLS
+1,8,Home Visits Pending,CLS
+1,9,Temporary Daily Rental Units,CLS
+1,10,Temporary Monthly Rental Units,CLS
+1,11,Chapter Hotline Calls,CLS
+1,12,Client Returns,CLS
+1,13,Total Homeowners,CLS
+1,14,Cases With Structure Insurance,CLS
+1,15,Hotel/Motel Rent Dollars,CLS
+1,16,Outreach Contacts,CLS
+1,17,Outreach Notes,CLS
+1,18,Cases Opened on Outreach,CLS
+1,19,Verified Deaths,HS
+1,20,Verified Hospitalized,HS
+1,21,Verified Ill or Injured,HS
+1,22,Home or Hospital Visits Completed,HS
+1,23,Home Visits Pending,HS
+1,24,HS Form 1475 Completed,HS
+1,25,HS Form 1475 Open,HS
+1,26,Health Services Contacts,HS
+1,27,Emergency Aid Stations,MC
+1,28,Staff Ill,SS
+1,28,Staff Injured,SS
+1,29,Staff Hospitalized,SS
+1,30,Mental Health Contacts,SS
+1,32,Non-T&M ARC Affiliated Volunteers,SS
+1,33,Non-T&M ARC Employees,SS
+1,34,Total Non-T&M Staff,SS
+1,35,T&M ARC Volunteers,SS
+1,36,T&M ARC Employees,SS
+1,37,Total T&M Staff,SS
+1,38,Grand Total All Staff,SS
+1,47,DRO Total Relief Commitments,FIN
+1,52,DRO Total Operation Commitments,FIN
+1,39,CLS Total Relief Commitments,FIN
+1,53,Client Shelters,MC
+1,54,Shelter Overnight Stays,MC
+1,55,Fixed Feeding Sites,MC
+1,56,Vehicles Providing Mobile Feeding,MC
+1,57,Meals Served,MC
+1,58,Cleanup Kits Distributed,MC
+1,59,Comfort Kits Distributed,MC
+1,63,Total National Vehicles,MC
+1,64,Passenger Rental Vehicles,MC
+1,70,Training Sessions,MC
+1,71,Persons Given Training,MC

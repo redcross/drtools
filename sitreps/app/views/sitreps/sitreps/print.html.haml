@@ -1,0 +1,24 @@
+- collection.each do |resource|
+  .sitrep-page
+    .header
+      %table.table.header-table
+        %tr
+          %td
+            %h4 Date
+            = resource.date
+          %td
+            %h4 Activity
+            = resource.activity
+          %td
+            %h4 Territory
+            = resource.territory
+          %td
+            %h4 Submitted By
+            = resource.submitter_name
+    .clearfix(style="clear: both")
+    .body.clearfix
+      - resource.responses.each do |resp|
+        %hr
+        %h4=resp.title
+        =simple_format resp.response
+    %hr.end-page

@@ -1,0 +1,8 @@
+%h1 
+  Environments:
+  %small=link_to 'Edit', admin_environments_path, class: 'badge'
+
+%ul
+  - Environment.all.each do |e|
+    %li
+      %h3=link_to e.name, environment_path(e)
