@@ -19,6 +19,9 @@ module DRTools
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.i18n.enforce_available_locales = true
+
+
     config.autoload_paths << "#{Rails.root}/lib" << "#{Rails.root}/app/inputs"
     #config.middleware.use PDFKit::Middleware, :print_media_type => true, page_size: 'Letter', margin_top: '1mm', margin_left: '1mm', margin_right: '1mm', margin_bottom: '1mm'
   end
