@@ -76,6 +76,7 @@ PATH
   specs:
     dsars (0.0.1)
       activerecord-import
+      googlecharts
       haml-rails
       httparty
       nokogiri
@@ -205,6 +206,7 @@ GEM
       retriable (>= 1.4)
       signet (>= 0.5.0)
       uuidtools (>= 2.1.0)
+    googlecharts (1.6.8)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
