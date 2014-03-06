@@ -12,7 +12,7 @@ module Iap
         authenticate_oauth!
       end
 
-      helper_method :oauth_user
+      helper_method :oauth_user, :access_token
     end
 
     def callback

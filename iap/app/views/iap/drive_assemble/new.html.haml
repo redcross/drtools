@@ -17,7 +17,7 @@
         %td=file['description']
       %tr
         %th Thumbnail
-        %td=image_tag file['thumbnailLink']
+        %td=image_tag thumbnail_link(file)
   -else
     %h3 
       Drive Files
@@ -35,7 +35,7 @@
             =image_tag file['iconLink']
             =content_type_mapping file['mimeType']
           %td=file['description']
-          %td=image_tag file['thumbnailLink']
+          %td=image_tag thumbnail_link(file)
   =f.actions
 
 
