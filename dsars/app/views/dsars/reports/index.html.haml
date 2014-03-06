@@ -5,9 +5,15 @@
     %tr
       %th Report Number
       %th COB Date
+      %th View
+      %th Actions
   %tbody
     - @reports.each do |rep|
       %tr
-        %td=link_to rep.report_number, report_path(parent, rep.report_number)
+        %td=rep.report_number
         %td=rep.cob_date
+        %td
+          =link_to "5266", report_path(parent, rep.report_number)
+          \|
+          =link_to "DOSR", report_dosr_path(parent, rep.report_number)
         %td Re-Import Report

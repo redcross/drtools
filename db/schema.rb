@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304045614) do
+ActiveRecord::Schema.define(version: 20140306165608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20140304045614) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "dsars_dosr_configs", force: true do |t|
+    t.integer  "environment_id"
+    t.integer  "dosr_line_number"
+    t.string   "name"
+    t.integer  "lines",            default: [],   array: true
+    t.boolean  "enabled",          default: true
+    t.string   "format"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dsars_dosr_configs", ["environment_id"], name: "index_dsars_dosr_configs_on_environment_id", using: :btree
+  add_index "dsars_dosr_configs", ["lines"], name: "index_dsars_dosr_configs_on_lines", using: :gin
 
   create_table "dsars_line_descriptions", force: true do |t|
     t.string   "report_type"
@@ -74,6 +88,8 @@ ActiveRecord::Schema.define(version: 20140304045614) do
     t.integer "total"
   end
 
+  add_index "dsars_report_lines", ["report_id"], name: "idx_report_lines_report_id", using: :btree
+
   create_table "dsars_reports", force: true do |t|
     t.string   "report_type"
     t.integer  "report_version"
@@ -91,6 +107,8 @@ ActiveRecord::Schema.define(version: 20140304045614) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "dsars_reports", ["report_type", "report_number"], name: "idx_reports_type_number", using: :btree
 
   create_table "environments", force: true do |t|
     t.boolean  "enabled"
@@ -215,6 +233,27 @@ ActiveRecord::Schema.define(version: 20140304045614) do
 
   add_index "sitreps_sitreps", ["creator_id"], name: "index_sitreps_sitreps_on_creator_id", using: :btree
   add_index "sitreps_sitreps", ["environment_id"], name: "index_sitreps_sitreps_on_environment_id", using: :btree
+
+  create_table "territories", force: true do |t|
+    t.integer  "environment_id"
+    t.string   "name"
+    t.string   "description"
+    t.integer  "ordinal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "territories", ["environment_id"], name: "index_territories_on_environment_id", using: :btree
+
+  create_table "territory_scopes", force: true do |t|
+    t.integer  "territory_id"
+    t.string   "scope_type"
+    t.string   "unit_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "territory_scopes", ["territory_id"], name: "index_territory_scopes_on_territory_id", using: :btree
 
   create_table "user_environments", force: true do |t|
     t.integer  "user_id"

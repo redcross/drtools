@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  territory_id: 
+  scope_type: MyString
+  unit_code: MyString
+
+two:
+  territory_id: 
+  scope_type: MyString
+  unit_code: MyString

@@ -1,0 +1,18 @@
+.dosr-territory
+  %h3=territory.name
+  =territory.description
+  %table.table.table-condensed.table-bordered.dosr-table
+    %tr
+      %th
+      %th Name
+      %th Pd
+      %th Total
+      %th Trend
+    - lines.each do |line|
+      - next unless line.period || line.total
+      %tr{data: {period_history: line.period_history.join(",")}}
+        %td=line.dosr_line_number
+        %td=link_to line.name, "#dosr-reference-#{line.dosr_line_number}"
+        %td.val=format line.period, line[:format]
+        %td.val=format line.total, line[:format]
+        %td.history=image_tag sparkline_image_url(line.period_history), alt: line.name

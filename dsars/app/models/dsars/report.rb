@@ -6,5 +6,9 @@ module Dsars
     def self.consolidated
       where(scope: 'Consolidated')
     end
+
+    def self.form5266
+      where(report_type: '5266')
+    end
   end
 end

@@ -1,0 +1,23 @@
+.dosr-header
+  %table
+    %tr
+      %td.logo
+        =image_tag "logos/ARC Horizontal Stacked Cropped.png"
+      %td.masthead.text-center
+        %h1=@environment.name
+        %h2 Disaster Operations Summary Report
+        %h2=@report.cob_date
+- @lines_by_territory.each do |territory, lines|
+  =render 'territory', territory: territory, lines: lines
+.dosr-reference
+  %h3 DOSR Line Reference
+  %table.table.table-condensed
+    %tr
+      %th #
+      %th Name
+      %th Description
+    - @configs.each do |config|
+      %tr{id: "dosr-reference-#{config.dosr_line_number}"}
+        %td=config.dosr_line_number
+        %th=config.name
+        %td=simple_format config.description

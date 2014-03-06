@@ -4,7 +4,7 @@
     .col-sm-6
       =f.input :activity
     .col-sm-6
-      =f.input :territory
+      =f.input :territory, collection: parent.territories.map(&:name)
   .row
     .col-sm-6
       =f.input :submitter_name

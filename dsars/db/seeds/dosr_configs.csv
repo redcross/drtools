@@ -1,0 +1,27 @@
+Shelters/Evacuation Centers,1,1,t,Shelters and evacuation centers open under the administrative control of the Red Cross. These are traditional Red Cross shelters and Red Cross partner shelters that display any kind of Red Cross logo. 
+Shelter Overnight Stays,17,2,t,"Number of nights that individuals stay in shelters. As opposed to registrations, which are counted once, each night a registrant stays in a shelter is counted separately as a shelter night. "
+Meals Served,18,3,t,Number of individual meals served to clients and workers.
+Snacks Served,19,4,t,Number of individual snacks served to clients and workers.
+Fixed Feeding Sites,2,5,t,"Sites established as fixed locations for feeding clients, community workers and disaster workers. This includes shelters if, in addition to sheltering residents, they are also open to the public for feeding. It does not include locations primarily serving Red Cross workers. "
+Mobile Feeding Units,20,6,t,Number of vehicles of any type engaged in serving food to clients and workers.
+Kitchens,3,7,f,"Number of kitchens, established by or partnered with the Red Cross, where meals are prepared or packaged for distribution."
+ERVs,47,8,t,"Total number of Emergency Response Vehicles (ERVs) working on the operation. An ERV is a vehicle used on a disaster relief operation to provide mobile or fixed feeding, bulk distribution, and, as necessary, to be used as a casework, command or communications center or to transfer supplies. "
+Other Response Vehicles,48|49|50,9,f,"Total number of Emergency Communications Response Vehicles (ECRVs), and any other Red Cross owned or non-passenger rental vehicles. (Does not include ERVs) "
+Service Delivery Sites,1|2|4|6|7|8|9,10,t,"Total number of chapters, Individual Assistance Sites, and any other service delivery locations where Red Cross emergency assistance is being provided to clients. "
+Total Cases Opened,56,11,t,"Case records opened on Form 901 or in the Client Assistance System (CAS), regardless of the status of the case or the actual or expected disposition of the case."
+Jumpstart to Recovery Kits Distributed,67,12,f,"Number of Jumpstart to Recovery Kits Distributed - kit will be provided in a Red Cross backpack and usually contains items across the following four categories (along with some additional, event-specific items):
+- Comfort: work gloves, masks, blankets, bath-in-a-bag, and flashlight
+- Wellness: health information, first aid kit
+- Communication: crank operated cell-phone charger and radioInformation: recovery plans, local and national referral information, and safety information."
+Clean Up Kits Distributed,21,13,t,"Number of clean up kits distributed.  Each kit contains a broom, mop, bucket, disinfectant, rubber gloves and other items, distributed to clients to help them clean their homes after a disaster event. "
+Comfort Kits Distributed,22,14,t,"Number of comfort kits distributed.  Each kit contains personal hygiene items such as toothbrush, toothpaste, soap, etc., given to clients who have been displaced from their homes."
+Bulk Items Distributed,23,15,t,Number of bulk items distributed.
+Mental Health Contacts,79,16,t,"Contacts or interventions with disaster clients that have the potential to make a significant difference in an individuals or familys ability to cope with and recover from a disaster. In a small family, each family member is counted as a contact; addressing a large community group is counted as one contact."
+Health Services Contacts,75,17,t,"Contacts or interventions, conducted in person or over the phone, with disaster clients that have the potential to make a significant difference in an individuals or familys ability to recover from or deal with disaster-caused needs. Such contacts may answer questions, satisfy a need, provide information, or educate. "
+Total Red Cross Workers,39|41|42,18,t,Total number of all employees and volunteers working on the relief operation.
+Red Cross Volunteers,36|41,19,t,"Total number of local, spontaneous and Disaster Services Human Resources (DSHR) volunteers working on the relief operation. "
+Safe and Well Registrations,26,20,t,Total number of registrations on the Safe and Well website.
+# of EOCs Open,14,21,t,Number of Emergency Operations Centers (EOCs) that have been activated. 
+# of EOCs with Red Cross,15,22,t,Number of Emergency Operations Centers (EOCs) staffed with Red Cross liaisons. 
+Emergency Aid Stations,8,23,t,"Sites established in the immediate aftermath of an event where affected residents can obtain information on recovery and Red Cross services, as well as bulk items, health and mental health services."
+Workers Given Training,33,24,t,"Number of workers who attended a formal orientation, operational training or a full training session conducted for relief operation staff and held at the disaster relief operation (DRO)."

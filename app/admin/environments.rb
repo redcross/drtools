@@ -16,6 +16,15 @@ ActiveAdmin.register Environment do
     actions
   end
 
+  sidebar "Territories", only: [:show, :edit] do
+    span link_to("Territories", [:admin, resource, :territories])
+    ul do
+      resource.territories.each do |terr|
+        li link_to(terr.name, [:admin, resource, terr])
+      end
+    end
+  end
+
   #filter :email
   #filter :current_sign_in_at
   #filter :sign_in_count

@@ -8,15 +8,7 @@
 require 'csv'
 
 module Dsars
-  str = ""
-  File.open("#{Engine.root}/db/seeds/dosr_reference.csv", "r"){|f| str = f.read}
-  str = str.encode('UTF-8', :invalid => :replace, :undef => :replace)
-  csv = CSV.parse str
   LineDescription.where(report_type: 'dosr').delete_all
-  rows = csv.each_with_index.map do |row, idx|
-    LineDescription.new report_type: 'dosr', line_number: row[0], name: row[1], description: row[2]
-  end
-  LineDescription.import rows
 
   csv = CSV.read "#{Engine.root}/db/seeds/5266_reference.csv", "r"
   LineDescription.where(report_type: '5266').delete_all
@@ -24,4 +16,11 @@ module Dsars
     LineDescription.new report_type: '5266', report_version: row[0], line_number: row[1], name: row[2], description: row[3], has_period: row[4]!='f', has_total: row[5]!='f', format: row[6]
   end
   LineDescription.import rows
+
+  csv = CSV.read "#{Engine.root}/db/seeds/dosr_configs.csv"
+  DosrConfig.where(environment_id: nil).delete_all
+  rows = csv.map do |row|
+    DosrConfig.new environment_id: nil, name: row[0], lines: row[1].split("|").map(&:to_i), dosr_line_number: row[2], enabled: true, description: row[4]
+  end
+  DosrConfig.import rows
 end

@@ -5,6 +5,7 @@ Dsars::Engine.routes.draw do
     end
     resources :reports, only: [:index, :show] do
       resources :charts, only: :show
+      resource :dosr, only: :show, controller: 'dosr'
     end
   end
 end

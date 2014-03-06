@@ -1,0 +1,65 @@
+.dosr-territory {
+  page-break-inside: avoid;
+}
+.dosr-header {
+  width: 100%;
+  padding: .25in 0in;
+  table {
+    width: 100%;
+  }
+  td.logo {
+    width: 40%;
+    vertical-align: middle;
+    text-align: center;
+    img {
+      width: 2.5in;
+    }
+  }
+  h1,h2 {
+    padding: 0;
+    margin: .1in 0;
+  }
+  h1 {
+    font-size: .3in;
+  }
+  h2 {
+    font-size: .2in;
+    margin: 0;
+  }
+}
+.dosr-table {
+  -webkit-print-color-adjust:exact;
+  th {
+    background-color: rgb(109, 110, 112);
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+  td {
+    padding: 2px !important;
+    vertical-align: middle;
+  }
+  td.val {
+    text-align: right;
+  }
+  tr:nth-child(even) td {
+    background-color: rgba(237, 27, 46, .1) !important;
+  }
+  td.history {
+    padding: 0 !important;
+    margin: 0 0 0 1px;
+    width: 3in;
+    img {
+      width: 3in;
+    }
+  }
+  a {
+    color: inherit !important;
+  }
+}
+.dosr-reference {
+  page-break-inside: avoid;
+  table {
+    font-size: 9pt;
+  }
+}

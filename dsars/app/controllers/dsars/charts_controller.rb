@@ -8,8 +8,16 @@ module Dsars
       @line_number = params[:id]
 
       @report = end_of_association_chain.first
+
+      parent_report = @report
+
       @line_description = LineDescription.where{(report_version == my{@report.report_version}) & (line_number == my{@line_number})}.first
-      @lines = ReportLine.joins{report}.where{(line_number == my{@line_number}) & (report.dro_number == my{parent.dr_number})}.order{report.report_number}.includes{report}.to_a
+      @lines = ReportLine.joins{report}.where{(line_number == my{@line_number}) &
+                                              (report.incident_number == parent_report.incident_number) &
+                                              (report.scope == parent_report.scope) &
+                                              (report.unit_id == parent_report.unit_id) &
+                                              (report.county_id == parent_report.county_id)
+                                              }.order{report.report_number}.includes{report}.to_a
     end
 
     def end_of_association_chain
