@@ -59,4 +59,5 @@ end
 group :development do
   gem 'byebug'
   gem 'quiet_assets'
+  gem 'foreman'
 end
