@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20140306165608) do
     t.integer  "lines",            default: [],   array: true
     t.boolean  "enabled",          default: true
     t.string   "format"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -88,8 +89,6 @@ ActiveRecord::Schema.define(version: 20140306165608) do
     t.integer "total"
   end
 
-  add_index "dsars_report_lines", ["report_id"], name: "idx_report_lines_report_id", using: :btree
-
   create_table "dsars_reports", force: true do |t|
     t.string   "report_type"
     t.integer  "report_version"
@@ -107,8 +106,6 @@ ActiveRecord::Schema.define(version: 20140306165608) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "dsars_reports", ["report_type", "report_number"], name: "idx_reports_type_number", using: :btree
 
   create_table "environments", force: true do |t|
     t.boolean  "enabled"
@@ -280,9 +277,8 @@ ActiveRecord::Schema.define(version: 20140306165608) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.integer  "chapter_id"
-    t.boolean  "vc_is_active"
     t.integer  "region_id"
+    t.boolean  "vc_is_active"
   end
 
 end

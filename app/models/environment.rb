@@ -9,6 +9,10 @@ class Environment < ActiveRecord::Base
   serialized_accessor :config, :enable_iap, :boolean
   serialized_accessor :config, :time_zone_raw, :string
 
+  def self.active
+    where{enabled == true}
+  end
+
   def time_zone
     @tz ||= ActiveSupport::TimeZone[time_zone_raw]
   end

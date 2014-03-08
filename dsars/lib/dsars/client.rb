@@ -5,7 +5,7 @@ require 'date'
 class Dsars::Client
   include HTTParty
   base_uri 'https://dsars.redcross.org'
-  debug_output
+  #debug_output
 
   class_attribute :list_url
   class_attribute :get_url
@@ -13,7 +13,7 @@ class Dsars::Client
   class_attribute :report_class
 
   def list_reports(incident_number, only_status=[:approved, :submitted])
-    resp = self.class.get(list_url, query: {startrecord: 1, endrecord: 500, sortorder: 'ascending', sortcolumn: 'col2', dr: incident_number, searchtype: 'advanced'}, cookies: self.cookies)
+    resp = self.class.get(list_url, query: {startrecord: 1, endrecord: 500, sortorder: 'ascending', sortcolumn: 'col2', incid: incident_number, searchtype: 'advanced'}, cookies: self.cookies)
   
     xml = Nokogiri::XML(resp.body)
     list = xml.xpath('//row').map{|node| ReportListItem.from_row(self, self.list_attributes(node)) }.select{|item| only_status.include? item.status}
