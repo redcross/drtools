@@ -1,0 +1,23 @@
+.header.well.well-sm.text-center
+  .pull-left=link_to 'Up One Level', parent_folder_path
+  .pull-right=link_to 'Switch User', switch_user_environment_template_path(environment, return_to: request.original_url), method: :post
+  Logged in as #{oauth_user}
+  .clearfix
+%h2 
+  Create Template
+  \-
+  =@folder['title']
+%h3 Create Template Here
+= form_tag url_for(action: :create), method: :post do
+  =hidden_field_tag :folder_id, @folder['id']
+  =text_field_tag :iap_folder_name, @folder['title']
+  =submit_tag 'Create', class: 'btn btn-sm btn-warning'
+%h3 Navigate
+%table.table.table-condensed
+  %tr
+    %th Folder Name
+  - @folders.each do |f|
+    %tr 
+      %td
+        =image_tag f['iconLink']
+        =link_to f['title'], url_for(folder_id: f['id'])

@@ -24,7 +24,7 @@ module Iap
 
     def switch_user
       logout_google!
-      authenticate_oauth!
+      authenticate_oauth! params[:return_to]
     end
 
   protected
@@ -61,7 +61,7 @@ module Iap
     end
 
     def access_token
-      oauth_credentials['token']
+      oauth_credentials && oauth_credentials['token']
     end
 
     def token_expired?

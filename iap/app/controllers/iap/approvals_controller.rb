@@ -30,7 +30,7 @@ module Iap
     end
 
     def build_resource_params
-      pp [params.fetch(:plan, {}).permit(:approver_name, :approver_title)]
+      [params.fetch(:plan, {}).permit(:approver_name, :approver_title)]
     end
   end
 end

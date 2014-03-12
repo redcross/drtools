@@ -10,4 +10,15 @@ table.report-table {
   }
 
   font-size: 90%;
+  page-break-inside: avoid;
+
+  td.disabled {
+    background-color: #eee !important;
+  }
+
+  &.finance-table {
+    tbody td:last-child {
+      display: none;
+    }
+  }
 }

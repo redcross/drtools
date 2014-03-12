@@ -13,7 +13,8 @@ module Dsars
   csv = CSV.read "#{Engine.root}/db/seeds/5266_reference.csv", "r"
   LineDescription.where(report_type: '5266').delete_all
   rows = csv.each_with_index.map do |row, idx|
-    LineDescription.new report_type: '5266', report_version: row[0], line_number: row[1], name: row[2], description: row[3], has_period: row[4]!='f', has_total: row[5]!='f', format: row[6]
+    format = row[4] == 'TRUE' ? 'currency' : 'default'
+    LineDescription.new report_type: '5266', report_version: row[0], line_number: row[1], name: row[2], description: row[3], has_period: row[5]!='FALSE', has_total: row[6]!='FALSE', format: format
   end
   LineDescription.import rows
 

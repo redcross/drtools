@@ -15,6 +15,13 @@ Iap::Engine.routes.draw do
         end
       end
 
+      collection do
+        resource :template, controller: :template do
+          get 'new/(:folder_id)', action: 'new', as: :list_drive
+          post 'switch_user'
+        end
+      end
+
     end
   end
 

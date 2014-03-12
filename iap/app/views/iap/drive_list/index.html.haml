@@ -9,7 +9,9 @@
     %th Folder Name
   - @folders.each do |f|
     %tr 
-      %td=link_to f['title'], list_folder_path(f['id'])
+      %td
+        =image_tag f['iconLink']
+        =link_to f['title'], list_folder_path(f['id'])
 
 %h2 Files
 %table.table.table-condensed

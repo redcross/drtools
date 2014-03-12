@@ -19,7 +19,7 @@ module Dsars
                                               (report.county_id == parent_report.county_id)
                                               }.order{report.report_number}.includes{report}.to_a
 
-      breadcrumb "Report #{@line_number}", report_path(parent, @report.report_number)
+      breadcrumb "Report #{@report.report_number}", report_path(parent, @report.report_number)
       breadcrumb @line_description.name
     end
 

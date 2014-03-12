@@ -57,7 +57,7 @@ module Dsars
         end
 
         scopes.each do |scope|
-          report5266 = find_or_initialize_report report, '5266', scope
+          report5266 = find_or_initialize_report list_item, '5266', scope
           report5266.update_attributes({
             dro_number: list_item.dro_number,
             incident_name: list_item.incident_name,
@@ -98,17 +98,17 @@ module Dsars
           data.save!
         end
       end
+    end
 
-      def find_or_initialize_report(report, report_type, scope, scope_name=nil)
-        Report.find_or_initialize_by report_type: '5233',
-                                     incident_number: report.incident_number, 
-                                     report_number: report.report_number,
-                                     scope: scope_name || scope.type,
-                                     unit_id: scope.unit_id,
-                                     unit_name: scope.unit_name,
-                                     county_id: scope.county_id,
-                                     county_name: scope.county_name
-      end
+    def find_or_initialize_report(report, report_type, scope, scope_name=nil)
+      Report.find_or_initialize_by report_type: report_type,
+                                   incident_number: report.incident_number, 
+                                   report_number: report.report_number,
+                                   scope: scope_name || scope.type,
+                                   unit_id: scope.unit_id,
+                                   unit_name: scope.unit_name,
+                                   county_id: scope.county_id,
+                                   county_name: scope.county_name
     end
   end
 end
