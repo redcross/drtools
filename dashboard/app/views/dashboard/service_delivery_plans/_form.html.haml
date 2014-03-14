@@ -1,0 +1,4 @@
+=form_for [parent, resource], url: :environment_dashboard_sdp, builder: FormtasticBootstrap::FormBuilder do |f|
+  =f.input :file
+  =f.input :approved_budget
+  =f.action :submit, button_html: {class: 'btn btn-primary'}

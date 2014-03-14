@@ -47,9 +47,9 @@ gem 'sentry-raven'
 
 gem 'rails_12factor', group: :production
 
-#gem 'pdfkit'
-#gem 'wkhtmltopdf-binary'
-#gem 'acts_as_flying_saucer', github: 'jlaxson/acts_as_flying_saucer', branch: 'master'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary', github: 'dwa012/wkhtmltopdf-binary'
+gem 'acts_as_flying_saucer', github: 'jlaxson/acts_as_flying_saucer', branch: 'master'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

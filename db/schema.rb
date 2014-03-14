@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306165608) do
+ActiveRecord::Schema.define(version: 20140312235015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 20140306165608) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "dashboard_service_delivery_plans", force: true do |t|
+    t.integer  "environment_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.decimal  "approved_budget"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dashboard_service_delivery_plans", ["environment_id"], name: "index_dashboard_service_delivery_plans_on_environment_id", using: :btree
 
   create_table "dsars_dosr_configs", force: true do |t|
     t.integer  "environment_id"
@@ -89,6 +102,8 @@ ActiveRecord::Schema.define(version: 20140306165608) do
     t.integer "total"
   end
 
+  add_index "dsars_report_lines", ["report_id"], name: "index_dsars_report_lines_on_report_id", using: :btree
+
   create_table "dsars_reports", force: true do |t|
     t.string   "report_type"
     t.integer  "report_version"
@@ -107,6 +122,8 @@ ActiveRecord::Schema.define(version: 20140306165608) do
     t.datetime "updated_at"
   end
 
+  add_index "dsars_reports", ["report_type", "report_number"], name: "index_dsars_reports_on_report_type_and_report_number", using: :btree
+
   create_table "environments", force: true do |t|
     t.boolean  "enabled"
     t.date     "active_start_date"
@@ -122,6 +139,7 @@ ActiveRecord::Schema.define(version: 20140306165608) do
     t.hstore   "config"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nss_incident_number"
   end
 
   create_table "iap_plan_attachments", force: true do |t|

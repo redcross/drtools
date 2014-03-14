@@ -1,0 +1,13 @@
+@page {
+  orientation: portrait;
+  //size: 8.5in 11in;
+  margin: 0.25in;
+}
+
+@media print {
+  .container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}

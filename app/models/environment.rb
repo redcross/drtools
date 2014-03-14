@@ -21,5 +21,9 @@ class Environment < ActiveRecord::Base
     slug
   end
 
+  def to_breadcrumb
+    short_name
+  end
+
   include Iap::EnvironmentAdditions
 end

@@ -23,6 +23,6 @@ module DRTools
 
 
     config.autoload_paths << "#{Rails.root}/lib" << "#{Rails.root}/app/inputs"
-    #config.middleware.use PDFKit::Middleware, :print_media_type => true, page_size: 'Letter', margin_top: '1mm', margin_left: '1mm', margin_right: '1mm', margin_bottom: '1mm'
+    config.middleware.use PDFKit::Middleware, :print_media_type => true, page_size: 'Letter', margin_top: '0.5in', margin_left: '0.5in', margin_right: '0.5in', margin_bottom: '0.5in'
   end
 end

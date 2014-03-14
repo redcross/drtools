@@ -26,6 +26,12 @@
     font-size: .2in;
     margin: 0;
   }
+  @media print {
+    padding: 0;
+    h1, h2 {
+      margin: 0;
+    }
+  }
 }
 .dosr-table {
   -webkit-print-color-adjust:exact;
@@ -59,7 +65,11 @@
 }
 .dosr-reference {
   page-break-inside: avoid;
+  h3 {
+    page-break-after: avoid;
+  }
   table {
+    page-break-before: avoid;
     font-size: 9pt;
   }
 }

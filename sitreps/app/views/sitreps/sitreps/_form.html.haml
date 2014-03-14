@@ -12,6 +12,7 @@
       =f.input :submitter_title
   - idx = 0
   =f.fields_for :responses do |resp|
+    =resp.hidden_field :id
     =resp.hidden_field :title
     =resp.hidden_field :ordinal, {value: idx}
     =resp.input :response, as: :text, input_html: {rows: 5}, label: resp.object.title

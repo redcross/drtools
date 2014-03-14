@@ -7,8 +7,20 @@
     display: none;
   }
 
+  .header-table {
+
+  }
+
   .header-table td {
     width: 25%
+  }
+
+  .banner h1 {
+    text-align: center;
+    background-color: #777 !important;
+    color: white !important;
+    margin: 0;
+    padding: .2in;
   }
 
   @media print {
@@ -19,7 +31,7 @@
 
     page-break-inside: avoid;
 
-    hr {
+    .body hr {
       display: block;
     }
     hr.end-page {
@@ -29,12 +41,9 @@
     h4 {
       font-weight: bold;
     }
+
+    table td {
+      border: none !important;
+    }
   }
-}
-
-
-@page {
-  orientation: portrait;
-  //size: 8.5in 11in;
-  //margin: 0.25in;
 }

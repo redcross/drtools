@@ -9,6 +9,7 @@ module Sitreps
     config[:request_name] = :sitrep
 
     custom_actions collection: [:print]
+    actions :all, except: :show
 
     #responders :pdf
 
@@ -21,15 +22,6 @@ module Sitreps
       end
     end
 
-
-    #def resource_path resource=resource
-    #  sitrep_path parent, resource
-    #end
-
-    #def parent
-    #  Environment.find_by_slug! params[:environment_id]
-    #end
-
     def end_of_association_chain
       resource_class.for_environment parent
     end
@@ -40,7 +32,7 @@ module Sitreps
     end
 
     def permitted_params
-      params.permit(sitrep: [:date, :activity, :submitter_name, :submitter_title, responses_attributes: [:title, :response]])
+      params.permit(sitrep: [:date, :activity, :submitter_name, :submitter_title, :territory, responses_attributes: [:id, :title, :response, :ordinal]])
     end
 
     def build_resource

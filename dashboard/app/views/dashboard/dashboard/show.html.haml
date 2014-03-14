@@ -31,6 +31,13 @@
       %tr
         %th Service Delivery Plan
         %td
+          - if @sdp
+            =link_to 'Download', @sdp.file.expiring_url
+            (Updated #{@sdp.updated_at} | 
+            =link_to 'Upload New', edit_environment_dashboard_sdp_path(parent)
+            )
+          - else
+            =link_to 'Upload', new_environment_dashboard_sdp_path(parent)
 .row
   .col-md-12
     %h3 Casework
@@ -175,4 +182,8 @@
         %th
         %th Operation Approved Budget
         %td(colspan=2)
-        %td $?
+        %td 
+          -if @sdp
+            =number_to_currency @sdp.approved_budget, precision: 0
+          -else
+            No SDP On File

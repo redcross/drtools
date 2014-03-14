@@ -13,7 +13,7 @@ module Breadcrumbs
   def add_environment_breadcrumb
     if params[:environment_id]
       env = current_environment
-      breadcrumb env.name, env if env
+      breadcrumb env.to_breadcrumb, env if env
     end
   end
 
