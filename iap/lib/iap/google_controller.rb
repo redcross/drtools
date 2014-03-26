@@ -13,6 +13,7 @@ module Iap
       end
 
       helper_method :oauth_user, :access_token
+      skip_before_filter :require_enabled_component!, only: :callback
     end
 
     def callback
@@ -48,12 +49,12 @@ module Iap
     def api_client
       return @api_client if @api_client
 
-      @api_client = Google::APIClient.new application_name: 'DRTools', 
+      @api_client = Google::APIClient.new application_name: 'DRTools',
                                        application_version: '0'
 
       @api_client.authorization.access_token = self.access_token
-      
-      @api_client                                
+
+      @api_client
     end
 
     def oauth_credentials

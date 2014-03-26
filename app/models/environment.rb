@@ -25,5 +25,9 @@ class Environment < ActiveRecord::Base
     short_name
   end
 
+  def component_enabled? component
+    self.send "enable_#{component}"
+  end
+
   include Iap::EnvironmentAdditions
 end

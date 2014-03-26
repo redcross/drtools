@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def user_time_zone(&block)
     if env = current_environment
-      tz = env.time_zone || Time.zone 
+      tz = env.time_zone || Time.zone
       Time.use_zone(tz, &block)
     else
       flash.now[:error] = 'No Environment' unless params[:controller] == 'root' && params[:action] == 'index' || Rails.env.production?
@@ -34,4 +34,13 @@ class ApplicationController < ActionController::Base
       Environment.find_by_slug!(params[:environment_id])
     end
   end
+
+  cattr_accessor :component_name
+  def require_enabled_component!
+    unless current_environment.nil? || current_environment.component_enabled?( self.class.component_name )
+      flash[:error] = "That DRTools component is not enabled."
+      redirect_to main_app.environment_path(current_environment)
+    end
+  end
+
 end
