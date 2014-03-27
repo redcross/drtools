@@ -1,7 +1,8 @@
 %h1
   =parent.name
   Sitreps
-  =link_to "Submit Situation Report", new_resource_path(parent), class: "btn btn-primary"
+  -if sitrep_config
+    =link_to "Submit Situation Report", new_resource_path(parent), class: "btn btn-primary"
   =link_to "Configure", edit_environment_sitrep_config_path(parent), class: 'btn'
 %table.table.table-condensed
   %thead

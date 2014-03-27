@@ -11,7 +11,10 @@ module Sitreps
     custom_actions collection: [:print]
     actions :all, except: :show
 
-    #responders :pdf
+    skip_before_filter :authenticate_user!, only: [:new, :create]
+    before_filter :check_anonymous_submit_or_authenticate!, only: [:new, :create]
+
+    responders :pdf
 
     protected
 
@@ -31,8 +34,8 @@ module Sitreps
       @sitrep_config ||= SitrepConfig.for_environment parent
     end
 
-    def permitted_params
-      params.permit(sitrep: [:date, :activity, :submitter_name, :submitter_title, :territory, responses_attributes: [:id, :title, :response, :ordinal]])
+    def build_resource_params
+      [params.require(:sitrep).permit(:date, :activity, :submitter_name, :submitter_title, :territory, responses_attributes: [:id, :title, :response, :ordinal]).merge(:creator_id => current_user.try(:id))]
     end
 
     def build_resource
@@ -44,6 +47,10 @@ module Sitreps
           sitrep.responses.build title: p.title unless existing.include? p.title
         end
       }
+    end
+
+    def check_anonymous_submit_or_authenticate!
+      authenticate_user! unless sitrep_config && sitrep_config.allow_unauthenticated_submit
     end
   end
 end
