@@ -35,7 +35,7 @@ module Sitreps
     end
 
     def build_resource_params
-      [params.require(:sitrep).permit(:date, :activity, :submitter_name, :submitter_title, :territory, responses_attributes: [:id, :title, :response, :ordinal]).merge(:creator_id => current_user.try(:id))]
+      [params.fetch(:sitrep, {}).permit(:date, :activity, :submitter_name, :submitter_title, :territory, responses_attributes: [:id, :title, :response, :ordinal]).merge(:creator_id => current_user.try(:id))]
     end
 
     def build_resource
