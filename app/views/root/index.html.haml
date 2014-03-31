@@ -1,6 +1,7 @@
 %h1 
   Environments:
-  %small=link_to 'Edit', admin_environments_path, class: 'badge'
+  -if role? Roles::CONFIGURE_ENVIRONMENT
+    %small=link_to 'Edit', admin_environments_path, class: 'badge'
 
 %ul
   - Environment.all.each do |e|

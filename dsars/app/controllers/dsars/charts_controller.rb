@@ -12,6 +12,11 @@ module Dsars
       parent_report = @report
 
       @line_description = LineDescription.where{(report_version == my{@report.report_version}) & (line_number == my{@line_number})}.first
+      
+      if @line_description.format == 'currency'
+        authorize! Roles::Dsars::FINANCIALS
+      end
+
       @lines = ReportLine.joins{report}.where{(line_number == my{@line_number}) &
                                               (report.incident_number == parent_report.incident_number) &
                                               (report.scope == parent_report.scope) &

@@ -1,9 +1,11 @@
 %h1 Incident Action Planning
 
-%h3 
-  Draft Plan
-  %small=link_to 'Create New', new_resource_path
-=render 'collection', collection: collection.draft
+-if role? [Roles::Iap::PRODUCER, Roles::Iap::APPROVER] 
+  %h3 
+    Draft Plan
+    -if role? Roles::Iap::PRODUCER
+      %small=link_to 'Create New', new_resource_path
+  =render 'collection', collection: collection.draft
 %h3 Upcoming Plan
 =render 'collection', collection: collection.upcoming
 %h3 Current Plan

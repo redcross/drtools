@@ -5,6 +5,7 @@ module Iap
     before_filter :authenticate_oauth!
     skip_before_filter :add_breadcrumbs!, except: :index
     before_filter :require_draft_plan, only: :index
+    before_filter :authorize_producer!, only: :index
 
     MIME_FOLDER = "application/vnd.google-apps.folder"
 

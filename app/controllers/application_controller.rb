@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :authenticate_user!
+  after_action :check_authorization!
 
   include Breadcrumbs
 
@@ -40,6 +41,40 @@ class ApplicationController < ActionController::Base
     unless current_environment.nil? || current_environment.component_enabled?( self.class.component_name )
       flash[:error] = "That DRTools component is not enabled."
       redirect_to main_app.environment_path(current_environment)
+    end
+  end
+
+  helper_method :current_ability, :role?
+  def current_ability
+    @ability ||= EnvironmentAbility.new current_environment, current_user
+  end
+  def role? *args
+    current_ability.role? *args
+  end
+
+  class AccessDenied < StandardError; end
+
+  def authorize! role
+    @authorized = true
+    raise AccessDenied unless current_ability.role?(role)
+  end
+
+  def check_authorization!
+    #raise "Authorization Not Performed" unless @authorized
+    flash.now[:error] = "Authorization Not Performed" unless @authorized
+  end
+
+  rescue_from AccessDenied do |e|
+    respond_to do |fmt|
+      fmt.any(:html) { 
+        flash[:error] = "You are not authorized to perform that action."
+        begin
+          redirect_to :back
+        rescue ActionController::RedirectBackError
+          redirect_to main_app.environment_path(current_environment)
+        end
+      }
+      fmt.all { head :forbidden }
     end
   end
 

@@ -7,10 +7,11 @@ class UserLogin
   attr_reader :user, :auth, :client
 
   def login!
-    @user = User.find_or_initialize_by(provider: auth['provider'], uid: auth['uid'])
+    @user = User.find_or_create_by(provider: auth['provider'], uid: auth['uid'])
 
     update_from_auth
     update_from_api
+    update_region_if_needed user.region_id
 
     user.save!
     user
@@ -28,10 +29,11 @@ class UserLogin
   def update_from_api
     data = client.person.get_person
 
+    user.member_number = data['vc_member_number']
     user.vc_is_active = data['vc_is_active']
     user.region_id = data['chapter_id']
 
-    update_region_if_needed user.region_id
+    update_deployments data['deployments']
   end
 
   def update_region_if_needed region_id
@@ -40,5 +42,14 @@ class UserLogin
     region.name = data['name']
     region.short_name = data['short_name']
     region.save!
+  end
+
+  def update_deployments deployments
+    deployments.each do |deployment|
+      dep = @user.deployments.find_or_initialize_by dr_number: deployment['dr_number'], gap: deployment['gap']
+      dep.dr_name = deployment['name']
+      dep.assign_date = deployment['assign_date']
+      dep.release_date = deployment['release_date']
+    end
   end
 end

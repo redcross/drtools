@@ -8,6 +8,8 @@ module Iap
 
     actions :new, :create, :destroy, :update
 
+    before_filter :authorize_approver!
+
     def destroy
       resource.approver_name = resource.approver_title = resource.approved_at = nil
       resource.status = 'draft'

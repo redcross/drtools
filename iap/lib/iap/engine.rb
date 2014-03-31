@@ -20,5 +20,11 @@ module Iap
         path_prefix: '/auth'
       }
     end
+
+    ActiveSupport.on_load :roles do
+      register :iap, :admin
+      register :iap, :producer
+      register :iap, :approver
+    end
   end
 end

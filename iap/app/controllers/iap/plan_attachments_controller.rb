@@ -5,6 +5,7 @@ module Iap
     belongs_to :environment, finder: :find_by_slug!
     belongs_to :plan, finder: :find_by_number!
     before_filter :require_draft_plan
+    before_filter :authorize_producer!
 
     def new_upload
       new!

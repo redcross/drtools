@@ -14,6 +14,8 @@ module Iap
 
       helper_method :oauth_user, :access_token
       skip_before_filter :require_enabled_component!, only: :callback
+      skip_before_filter :authorize_producer!, only: :callback
+      skip_before_filter :authorize_approver!, only: :callback
     end
 
     def callback

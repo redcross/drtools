@@ -120,70 +120,71 @@
         %th Meals Served
         %td=chart_link 18, period_value(18)
         %td=chart_link 18, total_value( 18)
-.row
-  .col-md-12
-    %h3 Expenditures
-    %table.table.table-bordered.table-striped
-      %tr
-        %th Class
-        %th Description
-        %th 5266 Line
-        %th Period
-        %th Total
-      %tr
-        %th Class 1
-        %th Mass Care
-        %td 97
-        %td=chart_link 97, number_to_currency( period_value(97), precision: 0)
-        %td=chart_link 97, number_to_currency( total_value( 97), precision: 0)
-      %tr
-        %th Class 2
-        %th Personal Items
-        %td 83
-        %td=chart_link 83, number_to_currency( period_value(83), precision: 0)
-        %td=chart_link 83, number_to_currency( total_value( 83), precision: 0)
-      %tr
-        %th Class 3
-        %th Hotel, Rental Assistance
-        %td 84
-        %td=chart_link 84, number_to_currency( period_value(84), precision: 0)
-        %td=chart_link 84, number_to_currency( total_value( 84), precision: 0)
-      %tr 
-        %th Class 4
-        %th Beds, Bedding, Storage
-        %td 85
-        %td=chart_link 85, number_to_currency( period_value(85), precision: 0)
-        %td=chart_link 85, number_to_currency( total_value( 85), precision: 0)
-      %tr
-        %th Class 5
-        %th Health Needs
-        %td 88+89
-        %td=number_to_currency( [period_value(88),period_value(89)].compact.sum, precision: 0)
-        %td=number_to_currency( [total_value( 88),total_value( 89)].compact.sum, precision: 0)
-      %tr
-        %th
-        %th Total Direct Services
-        %td 92+97
-        %td=number_to_currency( [period_value(92),period_value(97)].compact.sum, precision: 0)
-        %td=number_to_currency( [total_value( 92),total_value( 97)].compact.sum, precision: 0)
-      %tr
-        %th
-        %th Total Indirect Expenditures
-        %td 141-92-97
-        %td=number_to_currency( period_indirect, precision: 0)
-        %td=number_to_currency( total_indirect, precision: 0)
-      %tr
-        %th
-        %th Operation Total Commitments
-        %td 141
-        %td=chart_link 141, number_to_currency( period_value(141), precision: 0)
-        %td=chart_link 141, number_to_currency( total_value( 141), precision: 0)
-      %tr
-        %th
-        %th Operation Approved Budget
-        %td(colspan=2)
-        %td 
-          -if @sdp
-            =number_to_currency @sdp.approved_budget, precision: 0
-          -else
-            No SDP On File
+-if current_ability.role? Roles::Dsars::FINANCIALS
+  .row
+    .col-md-12
+      %h3 Expenditures
+      %table.table.table-bordered.table-striped
+        %tr
+          %th Class
+          %th Description
+          %th 5266 Line
+          %th Period
+          %th Total
+        %tr
+          %th Class 1
+          %th Mass Care
+          %td 97
+          %td=chart_link 97, number_to_currency( period_value(97), precision: 0)
+          %td=chart_link 97, number_to_currency( total_value( 97), precision: 0)
+        %tr
+          %th Class 2
+          %th Personal Items
+          %td 83
+          %td=chart_link 83, number_to_currency( period_value(83), precision: 0)
+          %td=chart_link 83, number_to_currency( total_value( 83), precision: 0)
+        %tr
+          %th Class 3
+          %th Hotel, Rental Assistance
+          %td 84
+          %td=chart_link 84, number_to_currency( period_value(84), precision: 0)
+          %td=chart_link 84, number_to_currency( total_value( 84), precision: 0)
+        %tr 
+          %th Class 4
+          %th Beds, Bedding, Storage
+          %td 85
+          %td=chart_link 85, number_to_currency( period_value(85), precision: 0)
+          %td=chart_link 85, number_to_currency( total_value( 85), precision: 0)
+        %tr
+          %th Class 5
+          %th Health Needs
+          %td 88+89
+          %td=number_to_currency( [period_value(88),period_value(89)].compact.sum, precision: 0)
+          %td=number_to_currency( [total_value( 88),total_value( 89)].compact.sum, precision: 0)
+        %tr
+          %th
+          %th Total Direct Services
+          %td 92+97
+          %td=number_to_currency( [period_value(92),period_value(97)].compact.sum, precision: 0)
+          %td=number_to_currency( [total_value( 92),total_value( 97)].compact.sum, precision: 0)
+        %tr
+          %th
+          %th Total Indirect Expenditures
+          %td 141-92-97
+          %td=number_to_currency( period_indirect, precision: 0)
+          %td=number_to_currency( total_indirect, precision: 0)
+        %tr
+          %th
+          %th Operation Total Commitments
+          %td 141
+          %td=chart_link 141, number_to_currency( period_value(141), precision: 0)
+          %td=chart_link 141, number_to_currency( total_value( 141), precision: 0)
+        %tr
+          %th
+          %th Operation Approved Budget
+          %td(colspan=2)
+          %td 
+            -if @sdp
+              =number_to_currency @sdp.approved_budget, precision: 0
+            -else
+              No SDP On File

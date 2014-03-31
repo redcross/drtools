@@ -1,6 +1,8 @@
 class Environment < ActiveRecord::Base
   include SerializedColumns
   has_many :territories
+  has_many :region_environments
+  has_many :user_environments
 
   serialized_accessor :config, :enable_dsars, :boolean
   serialized_accessor :config, :enable_sitreps, :boolean

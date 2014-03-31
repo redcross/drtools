@@ -1,5 +1,6 @@
 %h1 DSARS - #{parent.name}
-=link_to "Import DSARS Reports", input_path
+-if current_ability.role? Roles::Dsars::IMPORT
+  =link_to "Import DSARS Reports", input_path
 %table.table
   %thead
     %tr

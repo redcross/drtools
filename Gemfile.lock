@@ -75,6 +75,7 @@ PATH
   remote: arcdata-client
   specs:
     arcdata-client (0.0.1)
+      hashie
       rails (~> 4.0.2)
 
 PATH

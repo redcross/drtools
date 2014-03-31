@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312235015) do
+ActiveRecord::Schema.define(version: 20140331163925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,24 @@ ActiveRecord::Schema.define(version: 20140312235015) do
   end
 
   add_index "dashboard_service_delivery_plans", ["environment_id"], name: "index_dashboard_service_delivery_plans_on_environment_id", using: :btree
+
+  create_table "deployments", force: true do |t|
+    t.integer  "user_id"
+    t.string   "dr_number"
+    t.string   "dr_name"
+    t.string   "gap"
+    t.string   "group"
+    t.string   "activity"
+    t.string   "position"
+    t.string   "qual"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "assign_date"
+    t.date     "release_date"
+  end
+
+  add_index "deployments", ["dr_number", "user_id"], name: "index_deployments_on_dr_number_and_user_id", using: :btree
+  add_index "deployments", ["user_id"], name: "index_deployments_on_user_id", using: :btree
 
   create_table "dsars_dosr_configs", force: true do |t|
     t.integer  "environment_id"
@@ -141,6 +159,19 @@ ActiveRecord::Schema.define(version: 20140312235015) do
     t.datetime "updated_at"
     t.string   "nss_incident_number"
   end
+
+  create_table "gap_permissions", force: true do |t|
+    t.integer  "environment_id"
+    t.string   "group"
+    t.string   "activity"
+    t.string   "position"
+    t.string   "qual"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "roles",          array: true
+  end
+
+  add_index "gap_permissions", ["environment_id"], name: "index_gap_permissions_on_environment_id", using: :btree
 
   create_table "iap_plan_attachments", force: true do |t|
     t.integer  "plan_id"
@@ -275,6 +306,8 @@ ActiveRecord::Schema.define(version: 20140312235015) do
     t.integer  "environment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "member_number"
+    t.string   "roles",          array: true
   end
 
   add_index "user_environments", ["environment_id"], name: "index_user_environments_on_environment_id", using: :btree
@@ -297,6 +330,8 @@ ActiveRecord::Schema.define(version: 20140312235015) do
     t.string   "email"
     t.integer  "region_id"
     t.boolean  "vc_is_active"
+    t.string   "member_number"
+    t.string   "roles",                                        array: true
   end
 
 end

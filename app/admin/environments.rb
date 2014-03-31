@@ -16,13 +16,36 @@ ActiveAdmin.register Environment do
     actions
   end
 
-  sidebar "Territories", only: [:show, :edit] do
-    span link_to("Territories", [:admin, resource, :territories])
+  sidebar_actions = [:show, :edit]
+
+  sidebar "Territories", only: sidebar_actions do
     ul do
       resource.territories.each do |terr|
         li link_to(terr.name, [:admin, resource, terr])
       end
     end
+    div link_to("Manage", [:admin, resource, :territories])
+  end
+
+  sidebar "Home Regions", only: sidebar_actions do
+    ul do
+      resource.region_environments.includes{region}.each do |region_environment|
+        li region_environment.region.name
+      end
+    end
+    span link_to("Manage", [:admin, resource, :regions])
+  end
+
+  sidebar "Permissions", only: sidebar_actions do
+
+    div link_to("Permissions - Individual", [:admin, resource, :user_environments])
+    ul do
+      resource.user_environments.includes{user}.each do |user_environment|
+        li user_environment.title
+      end
+    end
+
+    div "Permissions - GAP"
   end
 
   #filter :email

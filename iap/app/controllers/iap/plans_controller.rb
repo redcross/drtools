@@ -6,6 +6,7 @@ module Iap
     belongs_to :environment, finder: :find_by_slug!
 
     before_filter :require_draft_plan, only: [:edit, :update]
+    before_filter :authorize_producer!, except: [:index, :show]
 
     protected
 

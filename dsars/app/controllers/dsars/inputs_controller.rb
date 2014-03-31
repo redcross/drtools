@@ -5,11 +5,13 @@ module Dsars
     belongs_to :environment, finder: :find_by_slug
 
     def show
+      authorize! Roles::Dsars::IMPORT
       @since_date = 1.day.ago.to_date
       @dr_number = parent.dr_number
     end
 
     def input
+      authorize! Roles::Dsars::IMPORT
       incident_number = parent.dsars_incident_number
       since = params[:data_since].present? && Date.parse(params[:data_since])
       consolidated_only = params[:consolidated_only] == '1'

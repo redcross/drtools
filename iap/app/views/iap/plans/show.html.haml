@@ -22,19 +22,23 @@
   %tr
     %th Approver Title
     %td=resource.approver_title
-  %tr
-    %th Actions
-    %td
-      -unless resource.approved?
-        =link_to 'Edit', edit_resource_path, class: "btn btn-primary btn-sm"
-        =link_to 'Approve', new_environment_plan_approval_path(*association_chain, resource), class: "btn btn-primary btn-sm"
-      -else
-        =link_to 'Unapprove', environment_plan_approval_path(*association_chain, resource), class: "btn btn-danger btn-sm", method: :delete
-      -if editable?
-        =link_to 'Delete', resource_path, class: "btn btn-danger btn-sm", data: {method: :delete, confirm: "Really delete this plan?  All attachments will be removed."}
+  -if role? [Roles::Iap::PRODUCER, Roles::Iap::APPROVER]
+    %tr
+      %th Actions
+      %td
+        -unless resource.approved?
+          -if role? Roles::Iap::PRODUCER
+            =link_to 'Edit', edit_resource_path, class: "btn btn-primary btn-sm"
+          -if role? Roles::Iap::APPROVER
+            =link_to 'Approve', new_environment_plan_approval_path(*association_chain, resource), class: "btn btn-primary btn-sm"
+        -else
+          -if role? Roles::Iap::APPROVER
+            =link_to 'Unapprove', environment_plan_approval_path(*association_chain, resource), class: "btn btn-danger btn-sm", method: :delete
+        -if editable? and role?(Roles::Iap::PRODUCER)
+          =link_to 'Delete', resource_path, class: "btn btn-danger btn-sm", data: {method: :delete, confirm: "Really delete this plan?  All attachments will be removed."}
 %h2 
   Attachments
-  -if editable?
+  -if editable? and role?(Roles::Iap::PRODUCER)
     %small=link_to 'Add Attachment', new_environment_plan_attachment_path(parent, resource)
 %table.table
   %tr

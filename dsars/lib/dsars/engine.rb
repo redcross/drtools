@@ -8,5 +8,11 @@ module Dsars
       app.config.autoload_paths << "#{config.root}/lib"
       app.config.paths["db/migrate"] << "#{config.root}/db/migrate"
     end
+
+    ActiveSupport.on_load :roles do
+      register :dsars, :admin
+      register :dsars, :financials
+      register :dsars, :import
+    end
   end
 end

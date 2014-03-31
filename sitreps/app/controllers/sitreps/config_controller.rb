@@ -9,7 +9,13 @@ module Sitreps
 
     actions :all, except: [:index, :show]
 
+    before_filter :authorize_resource
+
     private
+
+    def authorize_resource
+      authorize!(Roles::Sitreps::ADMIN)
+    end
 
     def add_breadcrumbs
       breadcrumb "Config", edit_resource_path

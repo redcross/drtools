@@ -5,7 +5,7 @@ module Dsars
     def show
       @environment = Environment.find_by_slug! params[:environment_id]
       report_num = params[:report_id]
-      @report = Report.form5266.consolidated.where{report_number==report_num}.first
+      @report = Report.form5266.consolidated.where{(report_number==report_num) & (incident_number==my{@environment.dsars_incident_number})}.first
       @lines = DosrLine.where{(environment_id == my{@environment}) & (report_number==report_num) & ((period != nil) | (total != nil))}.includes{territory}.order{dosr_line_number}
       @lines.sort_by!{|l| [l.territory.ordinal, l.dosr_line_number]}
       @lines_by_territory = @lines.group_by(&:territory)

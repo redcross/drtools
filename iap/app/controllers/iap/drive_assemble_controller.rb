@@ -9,6 +9,7 @@ module Iap
     belongs_to :plan, finder: :find_by_number!
 
     before_filter :require_draft_plan
+    before_filter :authorize_producer!
 
     def create
       build_resource
