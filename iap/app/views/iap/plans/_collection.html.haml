@@ -10,6 +10,7 @@
     %tr
       %td=resource.number
       %td
+        =resource.period_start.try(:to_s, :date_time)
       %td
         - resource.plan_attachments.each do |att|
           =link_to att.title, att.file.expiring_url

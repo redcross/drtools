@@ -104,6 +104,7 @@ PATH
     iap (0.0.1)
       assignable_values
       aws-sdk
+      cocoon
       google-api-client
       omniauth-google-oauth2
       paperclip (~> 4.0.0)

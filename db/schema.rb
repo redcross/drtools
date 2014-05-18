@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331163925) do
+ActiveRecord::Schema.define(version: 20140517161912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,6 +187,44 @@ ActiveRecord::Schema.define(version: 20140331163925) do
   end
 
   add_index "iap_plan_attachments", ["plan_id"], name: "index_iap_plan_attachments_on_plan_id", using: :btree
+
+  create_table "iap_planning_worksheet_lines", force: true do |t|
+    t.integer  "planning_worksheet_id"
+    t.string   "identifier"
+    t.string   "work_assignment"
+    t.string   "location"
+    t.string   "arrival_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iap_planning_worksheet_lines", ["planning_worksheet_id"], name: "index_iap_planning_worksheet_lines_on_planning_worksheet_id", using: :btree
+
+  create_table "iap_planning_worksheet_resources", force: true do |t|
+    t.integer  "planning_worksheet_line_id"
+    t.integer  "ordinal"
+    t.string   "resource"
+    t.integer  "requested"
+    t.integer  "have"
+    t.integer  "need"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "iap_planning_worksheets", force: true do |t|
+    t.integer  "plan_id"
+    t.datetime "prepared_at"
+    t.string   "prepared_by_name"
+    t.string   "prepared_by_title"
+    t.boolean  "completed"
+    t.string   "district"
+    t.string   "group"
+    t.string   "activity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iap_planning_worksheets", ["plan_id"], name: "index_iap_planning_worksheets_on_plan_id", using: :btree
 
   create_table "iap_plans", force: true do |t|
     t.integer  "environment_id"

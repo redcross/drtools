@@ -19,7 +19,7 @@ Bulk Items Distributed,23,15,t,Number of bulk items distributed.
 Mental Health Contacts,79,16,t,"Contacts or interventions with disaster clients that have the potential to make a significant difference in an individuals or familys ability to cope with and recover from a disaster. In a small family, each family member is counted as a contact; addressing a large community group is counted as one contact."
 Health Services Contacts,75,17,t,"Contacts or interventions, conducted in person or over the phone, with disaster clients that have the potential to make a significant difference in an individuals or familys ability to recover from or deal with disaster-caused needs. Such contacts may answer questions, satisfy a need, provide information, or educate. "
 Total Red Cross Workers,39|41|42,18,t,Total number of all employees and volunteers working on the relief operation.
-Red Cross Volunteers,36|41,19,t,"Total number of local, spontaneous and Disaster Services Human Resources (DSHR) volunteers working on the relief operation. "
+Red Cross Volunteers,38|41,19,t,"Total number of local, spontaneous and Disaster Services Human Resources (DSHR) volunteers working on the relief operation. "
 Safe and Well Registrations,26,20,t,Total number of registrations on the Safe and Well website.
 # of EOCs Open,14,21,t,Number of Emergency Operations Centers (EOCs) that have been activated. 
 # of EOCs with Red Cross,15,22,t,Number of Emergency Operations Centers (EOCs) staffed with Red Cross liaisons. 

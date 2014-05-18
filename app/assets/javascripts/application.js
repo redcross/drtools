@@ -15,3 +15,4 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require cocoon
+//= require iap/application

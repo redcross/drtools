@@ -5,6 +5,7 @@ module Iap
     validates :approver_name, :approver_title, presence: {if: :approved?}
 
     has_many :plan_attachments, dependent: :destroy
+    has_many :planning_worksheets, dependent: :destroy
 
     assignable_values_for :status do
       %w(draft approved)

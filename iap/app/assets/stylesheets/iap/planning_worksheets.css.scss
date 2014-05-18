@@ -1,0 +1,50 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+td.resource-cell {
+  padding: 0 !important;
+  width: 42px;
+  input {
+    width: 100%;
+    border: 0;
+    text-align: center;
+  }
+  .field {
+    border-bottom: 1px solid #ddd;
+  }
+  .field:last-child {
+    border: 0;
+  }
+}
+th.resource-cell {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.area-cell {
+  padding: 0 !important;
+  input, textarea {
+  display:inline-block;
+  height: 63px;
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+  }
+}
+
+.resource-header-cell {
+  input {
+    padding: 5px !important;
+    -webkit-transform: rotate(-90deg);
+    -webkit-transform-origin: 100% 0%; ;
+    width: 148px;
+    height: 40px;
+    margin-left: -148px;
+    margin-top: 0px;
+    border: 0;
+  }
+  width: 41px;
+  height: 150px;
+  padding: 0px !important;
+}

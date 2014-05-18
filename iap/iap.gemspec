@@ -24,4 +24,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'google-api-client'
   s.add_dependency 'prawn'
   s.add_dependency 'prawn-templates'
+  s.add_dependency 'cocoon'
 end

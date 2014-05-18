@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: 
+  dr_number: MyString
+  dr_name: MyString
+  gap: MyString
+  group: MyString
+  activity: MyString
+  position: MyString
+  qual: MyString
+
+two:
+  person_id: 
+  dr_number: MyString
+  dr_name: MyString
+  gap: MyString
+  group: MyString
+  activity: MyString
+  position: MyString
+  qual: MyString

@@ -1,0 +1,65 @@
+=semantic_form_for [parent, resource], url: (resource.persisted? ? resource_path : collection_path), builder: FormtasticBootstrap::FormBuilder do |f|
+  %table.table.table-bordered
+    %thead
+      %tr
+        %td.table-nested-container{colspan:num_resource_columns+3}
+          %table.table.table-bordered.table-nested
+            %tr
+              %td
+                %h3
+                  Operational Planning Worksheet
+              %td
+                %p 1. DR Number
+                %p=f.object.plan.environment.name
+              %td
+                %p 3. Op. Period
+                From:
+                =f.object.plan.period_start.try(:to_s, :date_time)
+                %br
+                To:
+                =f.object.plan.period_end.try(:to_s, :date_time)
+              %td
+                /=f.label :district
+                /=f.text_field :district
+                /%br
+                =f.label :group
+                =f.text_field :group
+                %br
+                =f.label :activity
+                =f.text_field :activity
+      %tr
+        %th Work Assignment
+        %th Res
+        - line = f.object.planning_worksheet_lines.first
+        -(1..num_resource_columns).each do |idx| 
+          %td.resource-header-cell
+            =text_field_tag "resource_col_#{idx}", (line && line.resource_line(idx).try(:resource)), placeholder: "Resource", class: "resource-header", data: {ordinal: idx}
+        %th
+          Reporting Location
+          %br
+          Arrival Time
+        
+    %tbody.worksheet-lines
+      =f.fields_for :planning_worksheet_lines do |f|
+        =render 'planning_worksheet_line_fields', f: f
+    %tfoot
+      %tr
+        %td{colspan:num_resource_columns+3}
+          Prepared By:
+          =f.text_field :prepared_by_name
+          Title:
+          =f.text_field :prepared_by_title
+          =label_tag :completed do
+            Completed: 
+            =f.check_box :completed, class: "print-yesno"
+            %span.cb-label
+  =f.actions class: "hidden-print" do
+    =link_to_add_association 'add line', f, :planning_worksheet_lines, data: {association_insertion_method: "append", association_insertion_node: "tbody.worksheet-lines"}, class: 'btn btn-primary'
+    =f.actions :submit
+
+  :javascript
+    $(function() {
+      planningWorksheetController = new PlanningWorksheetController();
+    });
+  :css
+    @page { size: landscape }

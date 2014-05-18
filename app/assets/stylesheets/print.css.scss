@@ -10,4 +10,32 @@
     padding: 0;
     margin: 0;
   }
+
+  input {
+    border: 0;
+  }
+
+  .print-yesno {
+    visibility: hidden;
+    &:checked + .cb-label:before {
+      content: "Yes";
+      diasplay: inline;
+    }
+
+    + .cb-label:before {
+      content: "No";
+      dispalay: inline;
+    }
+  }
+
+  ::-webkit-input-placeholder { }
+  :-moz-placeholder {           }
+  ::-moz-placeholder {          }
+  :-ms-input-placeholder {      }
+
+  input[value=""], input:not([value]) {
+    &:not([placeholder=""]) {
+      visibility: hidden;
+    }
+  }
 }

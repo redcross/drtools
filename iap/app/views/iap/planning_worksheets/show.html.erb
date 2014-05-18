@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @planning_worksheet.plan %>
+</p>
+
+<p>
+  <strong>Prepared at:</strong>
+  <%= @planning_worksheet.prepared_at %>
+</p>
+
+<p>
+  <strong>Prepared by name:</strong>
+  <%= @planning_worksheet.prepared_by_name %>
+</p>
+
+<p>
+  <strong>Prepared by title:</strong>
+  <%= @planning_worksheet.prepared_by_title %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @planning_worksheet.completed %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @planning_worksheet.district %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @planning_worksheet.group %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @planning_worksheet.activity %>
+</p>
+
+<%= link_to 'Edit', edit_planning_worksheet_path(@planning_worksheet) %> |
+<%= link_to 'Back', planning_worksheets_path %>

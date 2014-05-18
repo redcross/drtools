@@ -1,0 +1,20 @@
+%tr.nested-fields
+  %td.area-cell=f.text_area :work_assignment, {rows: 2}
+  %th.resource-cell
+    %small
+      Req.
+      %br
+      Have
+      %br
+      Need
+  - (1..num_resource_columns).each do |idx|
+    %td.resource-cell
+      =f.fields_for :planning_worksheet_resources, (f.object.resource_line(idx) || f.object.planning_worksheet_resources.build), include_id: false do |f|
+        =f.hidden_field :id
+        =f.hidden_field :ordinal, value: idx
+        =f.hidden_field :resource, data: {ordinal: idx}, class: "resource-header-hidden"
+        .field=f.text_field :requested, class: "resource-field", placeholder: "#"
+        .field=f.text_field :have, class: "resource-field", placeholder: "#"
+        .field=f.text_field :need, class: "resource-field", placeholder: "#"
+  %td.area-cell=f.text_area :location, {rows: 2}
+  %td.hidden-print=link_to_remove_association 'Remove', f

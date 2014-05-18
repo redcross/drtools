@@ -2,6 +2,7 @@ Iap::Engine.routes.draw do
   scope ':environment_id', as: :environment do
     resources :plans, path: 'iap' do
       resource :approval, only: [:new, :create, :destroy]
+      resources :planning_worksheets
 
       resources :attachments, controller: :plan_attachments do
         collection do
