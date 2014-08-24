@@ -45,7 +45,7 @@ class UserLogin
   end
 
   def update_deployments deployments
-    deployments.each do |deployment|
+    Array[deployments].each do |deployment|
       dep = @user.deployments.find_or_initialize_by dr_number: deployment['dr_number'], gap: deployment['gap']
       dep.dr_name = deployment['name']
       dep.assign_date = deployment['assign_date']
