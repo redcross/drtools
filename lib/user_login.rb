@@ -33,7 +33,7 @@ class UserLogin
     user.vc_is_active = data['vc_is_active']
     user.region_id = data['chapter_id']
 
-    update_deployments data['deployments']
+    #update_deployments data['deployments']
   end
 
   def update_region_if_needed region_id
