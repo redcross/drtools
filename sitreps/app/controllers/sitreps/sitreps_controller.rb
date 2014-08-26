@@ -16,6 +16,8 @@ module Sitreps
 
     responders :pdf
 
+    has_scope :for_date
+
     protected
 
     def add_breadcrumbs

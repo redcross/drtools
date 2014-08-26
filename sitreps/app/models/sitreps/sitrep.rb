@@ -13,5 +13,9 @@ module Sitreps
       where{environment_id == env}
     end
 
+    def self.for_date date_val
+      where{date == date_val}
+    end
+
   end
 end
