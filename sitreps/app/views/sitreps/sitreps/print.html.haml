@@ -1,28 +1,35 @@
-- collection.each do |resource|
-  .sitrep-page
-    .banner
-      %h1
-        =parent.name
-        Sitreps
-    .header
-      %table.table.header-table
-        %tr
-          %td
-            %h4 Date
-            = resource.date
-          %td
-            %h4 Activity
-            = resource.activity
-          %td
-            %h4 Territory
-            = resource.territory
-          %td
-            %h4 Submitted By
-            = resource.submitter_name
-    .clearfix(style="clear: both")
-    .body.clearfix
-      - resource.responses.each do |resp|
-        %hr
-        %h4=resp.title
-        =simple_format resp.response
-    %hr.end-page
+.hidden-print
+  .well
+    Date:
+    =form_tag '', method: :get do
+      =date_field_tag :for_date, current_scopes[:for_date], class: 'form_control'
+      =submit_tag 'Show', class: 'btn btn-primary'
+.sitrep-pages
+  - collection.each do |resource|
+    .sitrep-page
+      .banner
+        %h1
+          =parent.name
+          Sitreps
+      .header
+        %table.table.header-table
+          %tr
+            %td
+              %h4 Date
+              = resource.date
+            %td
+              %h4 Activity
+              = resource.activity
+            %td
+              %h4 Territory
+              = resource.territory
+            %td
+              %h4 Submitted By
+              = resource.submitter_name
+      .clearfix(style="clear: both")
+      .body.clearfix
+        - resource.responses.each do |resp|
+          %hr
+          %h4=resp.title
+          =simple_format resp.response
+      %hr.end-page

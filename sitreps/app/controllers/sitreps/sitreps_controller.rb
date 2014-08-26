@@ -16,7 +16,7 @@ module Sitreps
 
     responders :pdf
 
-    has_scope :for_date
+    has_scope :for_date, default: Date.current.to_s
 
     protected
 
@@ -53,6 +53,10 @@ module Sitreps
 
     def check_anonymous_submit_or_authenticate!
       authenticate_user! unless sitrep_config && sitrep_config.allow_unauthenticated_submit
+    end
+
+    def collection
+      @coll ||= apply_scopes(super)
     end
   end
 end

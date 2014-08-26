@@ -23,13 +23,14 @@
     padding: .2in;
   }
 
-  @media print {
-    page-break-before: always;
-    &:first-child {
-      page-break-before: never;
-    }
+  
+  page-break-before: always;
+  &:first-child {
+    page-break-before: never !important;
+  }
+  page-break-inside: avoid;
 
-    page-break-inside: avoid;
+@media print {
 
     .body hr {
       display: block;
