@@ -28,6 +28,16 @@
     }
   }
 
+  table.print-table * {
+    border-color: black !important;
+    border-top-color: black !important;
+    border-bottom-color: black !important;
+    border-left-color: black !important;
+    border-right-color: black !important;
+
+    box-sizing: border-box;
+  }
+
   ::-webkit-input-placeholder { }
   :-moz-placeholder {           }
   ::-moz-placeholder {          }

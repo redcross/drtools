@@ -1,0 +1,90 @@
+=semantic_form_for [parent, resource], url: (resource.persisted? ? resource_path : collection_path), builder: FormtasticBootstrap::FormBuilder, class: 'print-table' do |f|
+  %h2.center ICS 204 Work Assignment
+  %table.table.table-bordered.print-table
+    %tr
+      %td.table-header-cell
+        %strong 1. Incident Name
+        %br
+        =f.object.plan.environment.name
+      %td.table-header-cell
+        %strong 2. Op. Period
+        From:
+        =f.object.plan.period_start.try(:to_s, :date_time)
+        %br
+        To:
+        =f.object.plan.period_end.try(:to_s, :date_time)
+      %td(rowspan="2")
+        %strong 3.
+        %br
+        =f.label :group
+        =f.text_field :group
+        %br
+        =f.label :activity
+        =f.text_field :activity
+        %br
+        =f.label :district
+        =f.text_field :district
+    %tr
+      %td.table-nested-container(colspan="2" style="border-top: 0")
+        %table.table.table-nested
+          %tr
+            %th.form-header-cell 4. Personnel
+            %th.form-header-cell Name
+            %th.form-header-cell Contact Number
+          %tr
+            %td.form-header-cell Assistant Director:
+            %td.form-cell=f.text_field :section_chief_name, placeholder: "Name"
+            %td.form-cell=f.text_field :section_chief_phone, placeholder: '###-###-####'
+          %tr
+            %td.form-header-cell Manager:
+            %td.form-cell=f.text_field :activity_manager_name, placeholder: "Name"
+            %td.form-cell=f.text_field :activity_manager_phone, placeholder: '###-###-####'
+          %tr
+            %td.form-header-cell Supervisor:
+            %td.form-cell=f.text_field :supervisor_name, placeholder: "Name"
+            %td.form-cell=f.text_field :supervisor_phone, placeholder: '###-###-####'
+    %tr
+      %td.table-nested-container(colspan="3")
+        %table.table.table-nested.table-bordered.table-condensed
+          %thead
+            %tr
+              %th(colspan="2") 5. Resources Assigned:
+              %th.num-persons-cell(rowspan="2")
+                %small # Persons
+              %th.contact-number-cell(rowspan="2") Contact Number
+              %th.reporting-location-cell(rowspan="2") Reporting Location
+            %tr
+              %th.resource-identifier-cell Resource Identifier
+              %th.leader-cell Leader
+          %tbody.worksheet-lines
+            =f.fields_for :work_assignment_lines do |f|
+              =render 'work_assignment_line_fields', f: f
+          %tfoot.hidden-print
+            %td(colspan="5")
+              =link_to_add_association 'add line', f, :work_assignment_lines, data: {association_insertion_method: "append", association_insertion_node: "tbody.worksheet-lines"}, class: 'btn btn-primary'
+    %tr
+      %td.area-cell.keep-padding(colspan="3")
+        %strong 6. Work Assignments:
+        %br
+        =f.text_area :work_assignments
+    %tr
+      %td.area-cell.keep-padding(colspan="3")
+        %strong 7. Special Instructions
+        %br
+        =f.text_area :special_instructions
+    %tr
+      %td(colspan="3")
+        %strong 8. Communications
+        %br
+    %tr
+      %td(colspan="3")
+        %strong 9. Prepared by:
+        =f.text_field :prepared_by_name
+        Title:
+        =f.text_field :prepared_by_title
+        Date/Time
+        =f.object.prepared_at
+
+  .hidden-print
+    =f.action :submit, class: 'btn btn-primary'
+

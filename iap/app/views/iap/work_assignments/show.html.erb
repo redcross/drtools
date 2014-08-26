@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @work_assignment.plan %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @work_assignment.group %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @work_assignment.activity %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @work_assignment.district %>
+</p>
+
+<p>
+  <strong>Section chief name:</strong>
+  <%= @work_assignment.section_chief_name %>
+</p>
+
+<p>
+  <strong>Section chief phone:</strong>
+  <%= @work_assignment.section_chief_phone %>
+</p>
+
+<p>
+  <strong>Activity manager name:</strong>
+  <%= @work_assignment.activity_manager_name %>
+</p>
+
+<p>
+  <strong>Activity manager phone:</strong>
+  <%= @work_assignment.activity_manager_phone %>
+</p>
+
+<p>
+  <strong>Supervisor name:</strong>
+  <%= @work_assignment.supervisor_name %>
+</p>
+
+<p>
+  <strong>Supervisor phone:</strong>
+  <%= @work_assignment.supervisor_phone %>
+</p>
+
+<p>
+  <strong>Work assignments:</strong>
+  <%= @work_assignment.work_assignments %>
+</p>
+
+<p>
+  <strong>Special instructions:</strong>
+  <%= @work_assignment.special_instructions %>
+</p>
+
+<p>
+  <strong>Prepared by name:</strong>
+  <%= @work_assignment.prepared_by_name %>
+</p>
+
+<p>
+  <strong>Prepared by title:</strong>
+  <%= @work_assignment.prepared_by_title %>
+</p>
+
+<p>
+  <strong>Prepared at:</strong>
+  <%= @work_assignment.prepared_at %>
+</p>
+
+<%= link_to 'Edit', edit_work_assignment_path(@work_assignment) %> |
+<%= link_to 'Back', work_assignments_path %>

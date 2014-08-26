@@ -6,6 +6,7 @@ module Iap
 
     has_many :plan_attachments, dependent: :destroy
     has_many :planning_worksheets, dependent: :destroy
+    has_many :work_assignments, dependent: :destroy
 
     assignable_values_for :status do
       %w(draft approved)

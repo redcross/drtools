@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517161912) do
+ActiveRecord::Schema.define(version: 20140518045256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -253,6 +253,41 @@ ActiveRecord::Schema.define(version: 20140517161912) do
 
   add_index "iap_subscriptions", ["environment_id"], name: "index_iap_subscriptions_on_environment_id", using: :btree
   add_index "iap_subscriptions", ["user_id"], name: "index_iap_subscriptions_on_user_id", using: :btree
+
+  create_table "iap_work_assignment_lines", force: true do |t|
+    t.integer  "work_assignment_id"
+    t.string   "resource_identifier"
+    t.string   "leader"
+    t.integer  "num_persons"
+    t.string   "contact"
+    t.string   "reporting_location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iap_work_assignment_lines", ["work_assignment_id"], name: "index_iap_work_assignment_lines_on_work_assignment_id", using: :btree
+
+  create_table "iap_work_assignments", force: true do |t|
+    t.integer  "plan_id"
+    t.string   "group"
+    t.string   "activity"
+    t.string   "district"
+    t.string   "section_chief_name"
+    t.string   "section_chief_phone"
+    t.string   "activity_manager_name"
+    t.string   "activity_manager_phone"
+    t.string   "supervisor_name"
+    t.string   "supervisor_phone"
+    t.text     "work_assignments"
+    t.text     "special_instructions"
+    t.string   "prepared_by_name"
+    t.string   "prepared_by_title"
+    t.datetime "prepared_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iap_work_assignments", ["plan_id"], name: "index_iap_work_assignments_on_plan_id", using: :btree
 
   create_table "region_environments", force: true do |t|
     t.integer  "region_id"

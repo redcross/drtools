@@ -34,9 +34,21 @@
   padding: 0;
   margin: 0;
   border-collapse: collapse;
-  border: none;
+  border: none !important;
 
   tr > *:first-child {
-    border-left: none;
+    border-left: none !important;
+  }
+
+  tr > *:last-child {
+    border-right: none !important;
+  }
+
+  > *:last-child tr:last-child > * {
+    border-bottom: none !important;
+  }
+
+  > *:first-child tr:first-child > * {
+    border-top: none !important;
   }
 }

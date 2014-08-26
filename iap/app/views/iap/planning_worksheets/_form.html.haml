@@ -9,7 +9,7 @@
                 %h3
                   Operational Planning Worksheet
               %td
-                %p 1. DR Number
+                %p 1. Incident Name
                 %p=f.object.plan.environment.name
               %td
                 %p 3. Op. Period
@@ -22,7 +22,7 @@
                 /=f.label :district
                 /=f.text_field :district
                 /%br
-                =f.label :group
+                =f.label :group, 'Section'
                 =f.text_field :group
                 %br
                 =f.label :activity

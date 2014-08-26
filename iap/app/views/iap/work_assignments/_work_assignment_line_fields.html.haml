@@ -1,0 +1,7 @@
+%tr.nested-fields
+  %td.form-cell.resource-identifier-cell=f.text_field :resource_identifier, placeholder: "Name"
+  %td.form-cell.leader-cell=f.text_field :leader, placeholder: "Leader Name"
+  %td.form-cell.num-persons-cell=f.text_field :num_persons, placeholder: "#"
+  %td.form-cell.contact-cell=f.text_field :contact, placeholder: '###-###-####'
+  %td.form-cell.reporting-location-cell=f.text_field :reporting_location, placeholder: "Address and Time"
+  %td.form-header-cell.hidden-print=link_to_remove_association 'Remove', f, class: 'text-danger'
