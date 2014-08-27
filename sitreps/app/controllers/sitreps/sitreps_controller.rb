@@ -19,7 +19,7 @@ module Sitreps
     has_scope :for_date, default: Date.current.to_s, only: :print
 
     def create
-      create! { pp(current_user); pp(current_user ? smart_collection_url : submitted_resources_path) }
+      create! { current_user ? smart_collection_url : submitted_resources_path }
     end
 
     protected
