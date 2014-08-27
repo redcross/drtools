@@ -459,6 +459,7 @@ DEPENDENCIES
   haml-rails
   iap!
   jquery-rails
+  jquery-ui-rails
   less-rails
   newrelic_rpm
   omniauth

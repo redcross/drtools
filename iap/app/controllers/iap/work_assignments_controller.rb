@@ -32,7 +32,7 @@ module Iap
       [params.fetch(:work_assignment, {}).permit(:group, :activity, :district, :section_chief_name, :section_chief_phone,
               :activity_manager_phone, :activity_manager_name, :supervisor_name, :supervisor_phone, :work_assignments,
               :special_instructions, :prepared_by_name, :prepared_by_title,
-              work_assignment_lines_attributes: [:resource_identifier, :leader, :num_persons, :contact, :reporting_location, :_destroy, :id])]
+              work_assignment_lines_attributes: [:resource_identifier, :leader, :num_persons, :contact, :reporting_location, :ordinal, :_destroy, :id])]
     end
   end
 end

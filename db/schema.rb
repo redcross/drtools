@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518045256) do
+ActiveRecord::Schema.define(version: 20140827203815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -263,6 +263,7 @@ ActiveRecord::Schema.define(version: 20140518045256) do
     t.string   "reporting_location"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "ordinal"
   end
 
   add_index "iap_work_assignment_lines", ["work_assignment_id"], name: "index_iap_work_assignment_lines_on_work_assignment_id", using: :btree
