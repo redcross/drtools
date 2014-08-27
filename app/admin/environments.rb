@@ -33,7 +33,7 @@ ActiveAdmin.register Environment do
         li region_environment.region.name
       end
     end
-    span link_to("Manage", [:admin, resource, :regions])
+    span link_to("Manage", [:admin, resource, :region_affiliations])
   end
 
   sidebar "Permissions", only: sidebar_actions do
