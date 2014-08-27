@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
   def current_environment
     @environment ||= environment_from_association_chain || environment_from_param
   end
+  helper_method :current_environment
 
   def environment_from_association_chain
     if respond_to? :association_chain

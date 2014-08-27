@@ -57,6 +57,6 @@ class UserLogin
 
   def update_user_memberships
     return unless user.member_number.present?
-    UserEnvironment.where{member_number == my{user.member_number}}.update_all user_id: user.id
+    UserEnvironment.where{member_number == my{user.member_number.try(:to_s)}}.update_all user_id: user.id
   end
 end
