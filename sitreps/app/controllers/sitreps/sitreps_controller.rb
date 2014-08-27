@@ -8,15 +8,19 @@ module Sitreps
     belongs_to :environment, finder: :find_by_slug!
     config[:request_name] = :sitrep
 
-    custom_actions collection: [:print]
+    custom_actions collection: [:print, :submitted]
     actions :all, except: :show
 
-    skip_before_filter :authenticate_user!, only: [:new, :create]
+    skip_before_filter :authenticate_user!, only: [:new, :create, :submitted]
     before_filter :check_anonymous_submit_or_authenticate!, only: [:new, :create]
 
     responders :pdf
 
-    has_scope :for_date, default: Date.current.to_s
+    has_scope :for_date, default: Date.current.to_s, only: :print
+
+    def create
+      create! { pp(current_user); pp(current_user ? smart_collection_url : submitted_resources_path) }
+    end
 
     protected
 
