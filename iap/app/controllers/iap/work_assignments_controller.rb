@@ -7,9 +7,16 @@ module Iap
     belongs_to :plan, finder: :find_by_number!
     defaults route_prefix: nil
     actions :all, except: :show
+    custom_actions resource: :duplicate
 
     def smart_resource_url
       edit_resource_path
+    end
+
+    def duplicate
+      new_resource = resource.duplicate
+      new_resource.save
+      redirect_to edit_resource_path(new_resource)
     end
 
     protected

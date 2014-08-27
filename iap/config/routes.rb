@@ -5,7 +5,9 @@ Iap::Engine.routes.draw do
     resources :plans, path: 'iap' do
       resource :approval, only: [:new, :create, :destroy]
       resources :planning_worksheets
-      resources :work_assignments
+      resources :work_assignments do
+        post :duplicate, on: :member
+      end
 
       resources :attachments, controller: :plan_attachments do
         collection do

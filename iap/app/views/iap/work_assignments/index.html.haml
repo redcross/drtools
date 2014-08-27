@@ -16,4 +16,6 @@
         =resource.prepared_by_title
       %td
         =link_to "Edit", edit_resource_path(resource)
+        =link_to "Duplicate", duplicate_resource_path(resource), method: :post, data: {confirm: 'Really Duplicate?'}
+        =link_to "Delete", resource_path(resource), method: :delete, data: {confirm: 'Really Destroy?'}
 =link_to "Create 204", new_resource_path(), class: 'btn btn-primary'
