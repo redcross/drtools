@@ -5,12 +5,15 @@ require 'date'
 class Dsars::Client
   include HTTParty
   base_uri 'https://dsars.redcross.org'
+  default_options[:verify] = false
   #debug_output
 
   class_attribute :list_url
   class_attribute :get_url
   class_attribute :form_type
   class_attribute :report_class
+
+  class InvalidCredentials < StandardError; end
 
   def list_reports(incident_number, only_status=[:approved, :submitted])
     resp = self.class.get(list_url, query: {startrecord: 1, endrecord: 500, sortorder: 'ascending', sortcolumn: 'col2', incid: incident_number, searchtype: 'advanced'}, cookies: self.cookies)
