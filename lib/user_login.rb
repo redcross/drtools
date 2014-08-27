@@ -14,6 +14,8 @@ class UserLogin
     update_region_if_needed user.region_id
 
     user.save!
+    update_user_memberships
+
     user
   end
 
@@ -51,5 +53,10 @@ class UserLogin
       dep.assign_date = deployment['assign_date']
       dep.release_date = deployment['release_date']
     end
+  end
+
+  def update_user_memberships
+    return unless user.member_number.present?
+    UserEnvironment.where{member_number == my{user.member_number}}.update_all user_id: user.id
   end
 end
