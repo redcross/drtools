@@ -1,4 +1,4 @@
-ActiveAdmin.register RegionEnvironment, as: 'Region' do
+ActiveAdmin.register RegionEnvironment, as: 'Region Affiliation' do
   permit_params [:region_id]
 
   actions :all, except: [:show, :edit]
