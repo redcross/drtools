@@ -7,6 +7,7 @@ Iap::Engine.routes.draw do
       resources :planning_worksheets
       resources :work_assignments do
         post :duplicate, on: :member
+        get :print, on: :collection
       end
 
       resources :attachments, controller: :plan_attachments do

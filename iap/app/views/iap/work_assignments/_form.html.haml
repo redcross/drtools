@@ -1,4 +1,4 @@
-=semantic_form_for [parent, resource], url: (resource.persisted? ? resource_path : collection_path), builder: FormtasticBootstrap::FormBuilder, class: 'print-table' do |f|
+=semantic_form_for [parent, resource], url: (resource.persisted? ? resource_path(resource) : collection_path), builder: FormtasticBootstrap::FormBuilder, class: 'print-table' do |f|
   %h2.center ICS 204 Work Assignment
   %table.table.table-bordered.print-table
     %tr

@@ -1,4 +1,25 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+.work-assignment-page {
+  page-break-before: always;
+  &:first-child {
+    page-break-before: never !important;
+  }
+  page-break-inside: avoid;
+
+  @media print {
+
+    .body hr {
+      display: block;
+    }
+    hr.end-page {
+      display: none !important;
+    }
+
+    h4 {
+      font-weight: bold;
+    }
+
+    table td {
+      border: none !important;
+    }
+  }
+}
