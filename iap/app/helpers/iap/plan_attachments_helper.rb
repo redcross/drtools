@@ -10,7 +10,6 @@ module Iap
     end
 
     def default_plan_name
-      pp parent
       [current_environment.dr_number, current_environment.name, "IAP #{parent.number} #{parent.period_start.to_date.to_s :date}"].compact.join ' '
     end
 

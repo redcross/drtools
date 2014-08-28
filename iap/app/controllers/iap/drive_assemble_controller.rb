@@ -3,6 +3,7 @@ module Iap
     include GoogleController
     before_filter :authenticate_oauth!
     helper DriveListHelper
+    helper PlanAttachmentsHelper
     inherit_resources
     defaults resource_class: PlanAttachment, route_prefix: nil, collection_name: 'plan_attachments'
     belongs_to :environment, finder: :find_by_slug!
