@@ -80,10 +80,10 @@
       %td(colspan="3")
         %strong 9. Prepared by:
         =f.text_field :prepared_by_name
-        Title:
+        %strong Title:
         =f.text_field :prepared_by_title
-        Date/Time
-        =f.object.prepared_at
+        Date/Time:
+        =f.object.updated_at.try(:to_s, :date_time)
 
   .hidden-print
     =f.action :submit, class: 'btn btn-primary'

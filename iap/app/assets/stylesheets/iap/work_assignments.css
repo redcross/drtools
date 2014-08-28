@@ -1,3 +1,7 @@
+.worksheet-lines.drag-cell {
+  cursor: hand;
+}
+
 .work-assignment-page {
   page-break-before: always;
   &:first-child {
