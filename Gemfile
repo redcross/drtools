@@ -50,7 +50,7 @@ gem 'sentry-raven'
 gem 'rails_12factor', group: :production
 
 gem 'pdfkit'
-gem 'wkhtmltopdf-binary', github: 'dwa012/wkhtmltopdf-binary'
+gem 'wkhtmltopdf-heroku', github: 'cater2me/wkhtmltopdf-heroku'
 gem 'acts_as_flying_saucer', github: 'jlaxson/acts_as_flying_saucer', branch: 'master'
 
 group :doc do
@@ -62,4 +62,5 @@ group :development do
   gem 'byebug'
   gem 'quiet_assets'
   gem 'foreman'
+  gem 'wkhtmltopdf-binary', github: 'dwa012/wkhtmltopdf-binary'
 end
