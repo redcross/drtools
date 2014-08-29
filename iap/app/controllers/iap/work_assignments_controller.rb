@@ -2,15 +2,17 @@ require_dependency "iap/application_controller"
 
 module Iap
   class WorkAssignmentsController < ApplicationController
+    include GoogleController
     inherit_resources
     belongs_to :environment, finder: :find_by_slug!
     belongs_to :plan, finder: :find_by_number!
     defaults route_prefix: nil
     actions :all, except: :show
-    custom_actions resource: [:duplicate], collection: [:print]
+    custom_actions resource: [:duplicate], collection: [:print, :upload, :perform_upload]
     respond_to :html
     respond_to :pdf, only: :print
     before_filter :set_content_disposition
+    before_filter :authenticate_oauth!, only: [:upload, :perform_upload]
 
     def smart_resource_url
       edit_resource_path
@@ -20,6 +22,25 @@ module Iap
       new_resource = resource.duplicate
       new_resource.save
       redirect_to edit_resource_path(new_resource)
+    end
+
+    def upload
+
+    end
+
+    def perform_upload
+      unless params[:parent_folder]
+        redirect_to upload_resources_path
+        return
+      end
+
+      pdf_url = print_resources_url(format: :pdf)
+      pdf_response = ::HTTParty.get pdf_url, headers: {'Cookie' => request.env['HTTP_COOKIE']}
+      if pdf_response.success?
+        resp = drive.create_file({title: "D ICS 204 #{Date.current.to_s :date}", mimeType: 'application/pdf', parents: [{id: params[:parent_folder]}]}, pdf_response.body)
+        flash[:success] = "File was created in Drive"
+        redirect_to parent_path
+      end
     end
 
     protected

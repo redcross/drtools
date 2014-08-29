@@ -1,0 +1,14 @@
+
+:javascript
+  window.driveUploadController = new DriveUploadController(#{ENV['GOOGLE_BROWSER_KEY'].to_json}, #{access_token.to_json});
+  function onApiLoad() {
+    gapi.load('picker', {'callback': onPickerLoad})
+  }
+  function onPickerLoad() {
+    window.driveUploadController.start()
+  }
+
+=javascript_include_tag 'https://apis.google.com/js/api.js?onload=onApiLoad'
+
+=form_tag perform_upload_resources_path, method: :post, class: 'folder-form' do
+  =hidden_field_tag :parent_folder

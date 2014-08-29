@@ -7,6 +7,7 @@ require 'google/api_client'
 require 'prawn'
 require 'prawn/templates'
 require 'cocoon'
+require 'httparty'
 
 module Iap
 end

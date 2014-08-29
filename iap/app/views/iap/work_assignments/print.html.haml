@@ -1,6 +1,8 @@
 .hidden-print
   .well
     =link_to 'Download PDF', format: :pdf
+    \|
+    =link_to 'Upload to Drive', upload_resources_path
 .work-assignment-pages
   - collection.each do |form204|
     .work-assignment-page

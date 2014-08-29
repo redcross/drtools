@@ -71,6 +71,11 @@ module Iap
       end
     end
 
+    def create_file file_data, body
+      file = drive.files.insert.request_schema.new file_data
+      parse_result client.execute(api_method: drive.files.insert, body_object: file, media: body, parameters: {uploadType: 'multipart'})
+    end
+
     def create_folder(parent_ids, name)
       file = drive.files.insert.request_schema.new({
         'title' => name,
