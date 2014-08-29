@@ -52,7 +52,12 @@
             %tr
               %th(colspan="2") 5. Resources Assigned:
               %td.num-persons-cell(rowspan="2")
-                %small # Persons
+                %small 
+                  \#
+                  %br
+                  Per
+                  %br
+                  sons
               %td.contact-number-cell(rowspan="2") Contact Number
               %td.reporting-location-cell(rowspan="2") Reporting Location
             %tr
@@ -90,7 +95,7 @@
 
   -if editable
     .hidden-print
-      =f.action :submit, class: 'btn btn-primary'
+      =f.action :submit, button_html: {class: 'btn btn-primary'}, label: 'Save Work Assignment'
 
 :javascript
   window.workAssignmentController = new WorkAssignmentController()

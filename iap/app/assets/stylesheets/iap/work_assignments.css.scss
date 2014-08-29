@@ -1,5 +1,5 @@
-.worksheet-lines.drag-cell {
-  cursor: hand;
+.worksheet-lines .drag-cell {
+  cursor: ns-resize;
 }
 
 .inline-block {
@@ -29,6 +29,14 @@
 .assignments-table thead {
   td {
     vertical-align: bottom !important;
+  }
+
+  .contact-number-cell {
+    width: 8.5em;
+  }
+
+  .num-persons-cell {
+    line-height: 1;
   }
 }
 
