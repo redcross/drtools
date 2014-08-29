@@ -10,6 +10,7 @@ module Iap
     custom_actions resource: [:duplicate], collection: [:print]
     respond_to :html
     respond_to :pdf, only: :print
+    before_filter :set_content_disposition
 
     def smart_resource_url
       edit_resource_path
@@ -23,11 +24,19 @@ module Iap
 
     protected
 
+    def set_content_disposition
+      if request.env['Rack-Middleware-PDFKit']
+        filename = "#{current_environment.dr_number} IAP #{parent.number} ICS 204.pdf"
+        response.headers['Content-Disposition'] = "inline; filename=\"#{filename}\""
+      end
+    end
+
     def add_breadcrumbs
       super
       breadcrumb parent.to_breadcrumb, parent_path
-      breadcrumb "Planning Worksheets", (params[:id] && collection_path)
+      breadcrumb "Work Assignments", (params[:action] != 'index' && collection_path)
       breadcrumb (resource.activity || "New Assignment") if params[:id]
+      breadcrumb "Print" if params[:action]=='print'
     end
 
     def build_resource_params

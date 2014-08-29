@@ -1,5 +1,5 @@
 =semantic_form_for [parent, resource], url: (resource.persisted? ? resource_path(resource) : collection_path), builder: FormtasticBootstrap::FormBuilder, class: 'print-table' do |f|
-  %h2.center ICS 204 Work Assignment
+  %h3.center ICS 204 Work Assignment
   %table.table.table-bordered.print-table
     %tr
       %td.table-header-cell
@@ -7,57 +7,59 @@
         %br
         =f.object.plan.environment.name
       %td.table-header-cell
-        %strong 2. Op. Period
-        From:
-        =f.object.plan.period_start.try(:to_s, :date_time)
-        %br
-        To:
-        =f.object.plan.period_end.try(:to_s, :date_time)
+        .inline-block
+          %strong 2. Op. Period
+        .inline-block.ops-period
+          From:
+          =f.object.plan.period_start.try(:to_s, :date_time)
+          %br
+          To:
+          =f.object.plan.period_end.try(:to_s, :date_time)
       %td(rowspan="2")
         %strong 3.
         %br
-        =f.label :group
+        =f.label :group, 'Group:'
         =f.text_field :group
         %br
-        =f.label :activity
+        =f.label :activity, 'Activity:'
         =f.text_field :activity
         %br
-        =f.label :district
+        =f.label :district, 'District:'
         =f.text_field :district
     %tr
       %td.table-nested-container(colspan="2" style="border-top: 0")
-        %table.table.table-nested
+        %table.table.table-nested.personnel-table
           %tr
             %th.form-header-cell 4. Personnel
             %th.form-header-cell Name
             %th.form-header-cell Contact Number
           %tr
-            %td.form-header-cell Assistant Director:
+            %td.form-header-cell.personnel-label Assistant Director:
             %td.form-cell=f.text_field :section_chief_name, placeholder: "Name"
             %td.form-cell=f.text_field :section_chief_phone, placeholder: '###-###-####'
           %tr
-            %td.form-header-cell Manager:
+            %td.form-header-cell.personnel-label Manager:
             %td.form-cell=f.text_field :activity_manager_name, placeholder: "Name"
             %td.form-cell=f.text_field :activity_manager_phone, placeholder: '###-###-####'
           %tr
-            %td.form-header-cell Supervisor:
+            %td.form-header-cell.personnel-label Supervisor:
             %td.form-cell=f.text_field :supervisor_name, placeholder: "Name"
             %td.form-cell=f.text_field :supervisor_phone, placeholder: '###-###-####'
     %tr
       %td.table-nested-container(colspan="3")
-        %table.table.table-nested.table-bordered.table-condensed
+        %table.table.table-nested.table-bordered.table-condensed.assignments-table
           %thead
             %tr
               %th(colspan="2") 5. Resources Assigned:
-              %th.num-persons-cell(rowspan="2")
+              %td.num-persons-cell(rowspan="2")
                 %small # Persons
-              %th.contact-number-cell(rowspan="2") Contact Number
-              %th.reporting-location-cell(rowspan="2") Reporting Location
+              %td.contact-number-cell(rowspan="2") Contact Number
+              %td.reporting-location-cell(rowspan="2") Reporting Location
             %tr
-              %th.resource-identifier-cell Resource Identifier
-              %th.leader-cell Leader
+              %td.resource-identifier-cell Resource Identifier
+              %td.leader-cell Leader
           %tbody.worksheet-lines
-            =f.fields_for :work_assignment_lines do |f|
+            =f.fields_for :work_assignment_lines , include_id: false do |f|
               =render 'work_assignment_line_fields', f: f, editable: editable
           - if editable
             %tfoot.hidden-print

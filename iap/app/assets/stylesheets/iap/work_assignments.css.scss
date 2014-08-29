@@ -1,0 +1,71 @@
+.worksheet-lines.drag-cell {
+  cursor: hand;
+}
+
+.inline-block {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ops-period {
+  padding-left: 1em;
+}
+
+.personnel-table {
+  td, th {
+    border: none !important;
+  }
+  .form-cell {
+    border-top: 1px solid #ddd !important;
+  }
+  .personnel-label {
+    text-align: right;
+    padding-right: 1em;
+    border-bottom: none !important;
+    border-top: none !important;
+  }
+}
+
+.assignments-table thead {
+  td {
+    vertical-align: bottom !important;
+  }
+}
+
+.work-assignment-page {
+  page-break-before: always;
+  &:first-child {
+    page-break-before: never !important;
+  }
+  page-break-inside: avoid;
+
+  @media print {
+
+    .body hr {
+      display: block;
+    }
+    hr.end-page {
+      display: none !important;
+    }
+
+    h4 {
+      font-weight: bold;
+    }
+
+    table td {
+      /*border: none !important;*/
+    }
+
+    .assignments-table, .xxpersonnel-table {
+    td, th {
+      border: 1px solid #ddd !important;
+    }
+    tr:last-child {
+      td, th {
+        border-bottom: none !important;
+      }
+    }
+  }
+
+  }
+}

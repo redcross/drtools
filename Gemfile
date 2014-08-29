@@ -50,7 +50,7 @@ gem 'sentry-raven'
 gem 'rails_12factor', group: :production
 
 gem 'pdfkit'
-gem 'wkhtmltopdf-heroku', github: 'cater2me/wkhtmltopdf-heroku'
+gem 'wkhtmltopdf-heroku', github: 'cater2me/wkhtmltopdf-heroku', group: :production
 gem 'acts_as_flying_saucer', github: 'jlaxson/acts_as_flying_saucer', branch: 'master'
 
 group :doc do
