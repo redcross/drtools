@@ -4,7 +4,8 @@
   %td.form-cell.num-persons-cell=f.text_field :num_persons, placeholder: "#"
   %td.form-cell.contact-cell=f.text_field :contact, placeholder: '###-###-####'
   %td.form-cell.reporting-location-cell=f.text_field :reporting_location, placeholder: "Address and Time"
-  %td.form-header-cell.hidden-print
-    =link_to_remove_association 'Remove', f, class: 'text-danger'
-    =f.hidden_field :ordinal
-  %td.form-header-cell.hidden-print.drag-cell Reorder
+  -if editable
+    %td.form-header-cell.hidden-print
+      =link_to_remove_association 'Remove', f, class: 'text-danger'
+      =f.hidden_field :ordinal
+    %td.form-header-cell.hidden-print.drag-cell Reorder

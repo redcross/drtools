@@ -14,6 +14,11 @@
     %th Op Period End
     %td=resource.period_end
   %tr
+    %th ICS 204 Work Assignments
+    %td
+      =link_to environment_plan_work_assignments_path(parent, resource) do
+        View #{resource.work_assignments.count} forms
+  %tr
     %th Status
     %td=resource.humanized_status
   %tr
@@ -36,6 +41,7 @@
             =link_to 'Unapprove', environment_plan_approval_path(*association_chain, resource), class: "btn btn-danger btn-sm", method: :delete
         -if editable? and role?(Roles::Iap::PRODUCER)
           =link_to 'Delete', resource_path, class: "btn btn-danger btn-sm", data: {method: :delete, confirm: "Really delete this plan?  All attachments will be removed."}
+
 %h2 
   Attachments
   -if editable? and role?(Roles::Iap::PRODUCER)

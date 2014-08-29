@@ -58,10 +58,11 @@
               %th.leader-cell Leader
           %tbody.worksheet-lines
             =f.fields_for :work_assignment_lines do |f|
-              =render 'work_assignment_line_fields', f: f
-          %tfoot.hidden-print
-            %td(colspan="5")
-              =link_to_add_association 'add line', f, :work_assignment_lines, data: {association_insertion_method: "append", association_insertion_node: "tbody.worksheet-lines"}, class: 'btn btn-primary'
+              =render 'work_assignment_line_fields', f: f, editable: editable
+          - if editable
+            %tfoot.hidden-print
+              %td(colspan="5")
+                =link_to_add_association 'add line', f, :work_assignment_lines, data: {association_insertion_method: "append", association_insertion_node: "tbody.worksheet-lines"}, class: 'btn btn-primary'
     %tr
       %td.area-cell.keep-padding(colspan="3")
         %strong 6. Work Assignments:
@@ -85,8 +86,9 @@
         Date/Time:
         =f.object.updated_at.try(:to_s, :date_time)
 
-  .hidden-print
-    =f.action :submit, class: 'btn btn-primary'
+  -if editable
+    .hidden-print
+      =f.action :submit, class: 'btn btn-primary'
 
 :javascript
   window.workAssignmentController = new WorkAssignmentController()

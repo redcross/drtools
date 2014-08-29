@@ -1,3 +1,7 @@
-- collection.each do |form204|
-  .work-assignment-page
-    =render 'form', resource: form204
+.hidden-print
+  .well
+    =link_to 'Download PDF', format: :pdf
+.work-assignment-pages
+  - collection.each do |form204|
+    .work-assignment-page
+      =render 'form', resource: form204, editable: false
