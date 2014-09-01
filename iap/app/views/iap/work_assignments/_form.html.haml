@@ -33,18 +33,18 @@
             %th.form-header-cell 4. Personnel
             %th.form-header-cell Name
             %th.form-header-cell Contact Number
-          %tr
+          %tr.name-autofill
             %td.form-header-cell.personnel-label Assistant Director:
-            %td.form-cell=f.text_field :section_chief_name, placeholder: "Name"
-            %td.form-cell=f.text_field :section_chief_phone, placeholder: '###-###-####'
-          %tr
+            %td.form-cell=f.text_field :section_chief_name, placeholder: "Name", class: 'autofill-name-field'
+            %td.form-cell=f.text_field :section_chief_phone, placeholder: '###-###-####', class: 'autofill-phone-field'
+          %tr.name-autofill
             %td.form-header-cell.personnel-label Manager:
-            %td.form-cell=f.text_field :activity_manager_name, placeholder: "Name"
-            %td.form-cell=f.text_field :activity_manager_phone, placeholder: '###-###-####'
-          %tr
+            %td.form-cell=f.text_field :activity_manager_name, placeholder: "Name", class: 'autofill-name-field'
+            %td.form-cell=f.text_field :activity_manager_phone, placeholder: '###-###-####', class: 'autofill-phone-field'
+          %tr.name-autofill
             %td.form-header-cell.personnel-label Supervisor:
-            %td.form-cell=f.text_field :supervisor_name, placeholder: "Name"
-            %td.form-cell=f.text_field :supervisor_phone, placeholder: '###-###-####'
+            %td.form-cell=f.text_field :supervisor_name, placeholder: "Name", class: 'autofill-name-field'
+            %td.form-cell=f.text_field :supervisor_phone, placeholder: '###-###-####', class: 'autofill-phone-field'
     %tr
       %td.table-nested-container(colspan="3")
         %table.table.table-nested.table-bordered.table-condensed.assignments-table
@@ -98,4 +98,4 @@
       =f.action :submit, button_html: {class: 'btn btn-primary'}, label: 'Save Work Assignment'
 
 :javascript
-  window.workAssignmentController = new WorkAssignmentController()
+  window.workAssignmentController = new WorkAssignmentController(#{person_datasource_url.to_json}, #{current_environment.dr_number.to_json});

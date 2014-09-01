@@ -54,7 +54,7 @@ module Iap
 
     def add_breadcrumbs
       super
-      breadcrumb parent.to_breadcrumb, parent_path
+      breadcrumb parent.to_breadcrumb, environment_plan_path(current_environment, parent)
       breadcrumb "Work Assignments", (params[:action] != 'index' && collection_path)
       breadcrumb (resource.activity || "New Assignment") if params[:id]
       breadcrumb "Print" if params[:action]=='print'

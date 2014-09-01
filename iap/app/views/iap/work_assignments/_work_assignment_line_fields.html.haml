@@ -1,8 +1,8 @@
-%tr.nested-fields
+%tr.nested-fields.name-autofill
   %td.form-cell.resource-identifier-cell=f.text_field :resource_identifier, placeholder: "Name"
-  %td.form-cell.leader-cell=f.text_field :leader, placeholder: "Leader Name"
+  %td.form-cell.leader-cell=f.text_field :leader, placeholder: "Leader Name", class: 'autofill-name-field'
   %td.form-cell.num-persons-cell=f.text_field :num_persons, placeholder: "#"
-  %td.form-cell.contact-cell=f.text_field :contact, placeholder: '###-###-####'
+  %td.form-cell.contact-cell=f.text_field :contact, placeholder: '###-###-####', class: 'autofill-phone-field'
   %td.form-cell.reporting-location-cell=f.text_field :reporting_location, placeholder: "Address and Time"
   -if editable
     %td.form-header-cell.hidden-print

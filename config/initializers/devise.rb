@@ -253,7 +253,7 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   uri = ENV['ARCDATA_OPENID_URL'] || "http://9ddc583f03581f709784cd1416ed6656:d3aa82a369f8521de6e9c7ada47683e88fb21d098a6ba7b545929c4ed4ff34bc@localhost:3000"
   uri = URI.parse uri
-  config.omniauth :openid_connect, name: 'arcdata', scope: ['openid', 'profile', 'vc_profile', 'deployments'], client_options: {
+  config.omniauth :openid_connect, name: 'arcdata', scope: ['openid', 'profile', 'vc_profile', 'deployments', 'user_phones'], client_options: {
     identifier: uri.user,
     secret: uri.password,
     scheme: uri.scheme,

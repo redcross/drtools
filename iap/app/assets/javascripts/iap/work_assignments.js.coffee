@@ -1,17 +1,25 @@
 
 class window.WorkAssignmentController
-  constructor: () ->
+  constructor: (@personDatasource, @drNumber) ->
     @resetOrdinals()
+    @updateAutofill()
     $(document).on 'cocoon:after-insert, cocoon:after-remove, sortupdate', () =>
       @resetOrdinals()
+      @updateAutofill()
     $('.worksheet-lines').sortable
       axis: 'y'
+      containment: '.worksheet-lines'
 
   resetOrdinals: () ->
     ordinal = 0
     $('.worksheet-lines > tr').each (idx, el) =>
       ordinal += 1
       $(el).find('input[id$=ordinal]').val(ordinal)
+
+  updateAutofill: () ->
+    $('.name-autofill').each (idx, el) =>
+      if !$(el).data('autofill')
+        $(el).data('autofill', new PersonTypeaheadController(el, @personDatasource, {deployed_to: @drNumber}))
 
 class window.DriveUploadController
   constructor: (@browserKey, @authToken) ->
