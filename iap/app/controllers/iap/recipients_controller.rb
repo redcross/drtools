@@ -11,7 +11,17 @@ module Iap
 
     def addresses
       separator = params[:separator] || ';'
-      render text: collection.map(&:email).join(separator)
+
+      emails = collection.map(&:email) + assigned_addresses
+      emails.uniq!
+
+      render text: emails.join(separator), content_type: 'text/plain'
+    end
+
+    protected
+
+    def assigned_addresses
+      parent.assigned_staff.includes{staff_contact_override}.map(&:primary_email)
     end
 
     def permitted_params
