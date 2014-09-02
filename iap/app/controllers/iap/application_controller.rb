@@ -16,5 +16,9 @@ module Iap
     def authorize_approver!
       authorize! Roles::Iap::APPROVER
     end
+
+    def authorize_iap_role!
+      authorize! [Roles::Iap::APPROVER, Roles::Iap::PRODUCER]
+    end
   end
 end

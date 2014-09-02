@@ -15,7 +15,7 @@ module Searchable
   end
 
   def collection
-    super.merge(search.result)
+    @searchable_collection ||= super.merge(search.result)
   end
 
   included do

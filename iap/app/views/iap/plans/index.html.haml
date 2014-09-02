@@ -1,6 +1,6 @@
 %h1 Incident Action Planning
-
 -if role? [Roles::Iap::PRODUCER, Roles::Iap::APPROVER] 
+  =link_to 'Distribution List', environment_recipients_path(parent)
   %h3 
     Draft Plan
     -if role? Roles::Iap::PRODUCER

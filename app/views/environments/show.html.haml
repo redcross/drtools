@@ -9,5 +9,7 @@
     %li=link_to "Incident Action Plans", iap.environment_plans_path(resource)
   -if resource.enable_sitreps
     %li=link_to "Situation Reports", sitreps.environment_sitreps_path(resource)
+  -if role? Roles::ASSIGNED_STAFF
+    %li=link_to "Assigned Staff", environment_assigned_staff_index_path(resource)
   -if resource.enable_cop
     %li Mapping

@@ -4,6 +4,23 @@
 %p
   Names/emails on this list will be added to the IAP distribution list.  Do not include those assigned to the DRO - they will included automatically.
 
+.well.well-sm
+  %strong View Addresses:
+  =form_tag addresses_resources_path, {method: :get, class: 'form'} do
+    %label
+      =check_box_tag 'q[recipient_type_in][]', 'internal', '1'
+      Internal
+    %label
+      =check_box_tag 'q[recipient_type_in][]', 'external', '1'
+      External
+    %label
+      =check_box_tag 'q[recipient_type_in][]', 'leadership', '1'
+      Leadership
+    %label
+      Format:
+      =select_tag 'separator', options_for_select([['Outlook', ';'], ['Mail.app', '%0A']]), class: 'form-control'
+    =submit_tag 'Show Addresses', class: 'btn btn-sm btn-default'
+
 %table.table.table-condensed
   %tr
     %th Name

@@ -43,5 +43,6 @@ module Roles
 
   register nil, :admin
   register nil, :configure_environment
+  register nil, :assigned_staff
   ActiveSupport.run_load_hooks :roles, self
 end
