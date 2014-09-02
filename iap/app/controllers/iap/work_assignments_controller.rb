@@ -45,6 +45,10 @@ module Iap
 
     protected
 
+    def collection
+      @coll ||= super.order{[district, group, activity]}
+    end
+
     def set_content_disposition
       if request.env['Rack-Middleware-PDFKit']
         filename = "#{current_environment.dr_number} IAP #{parent.number} ICS 204.pdf"
