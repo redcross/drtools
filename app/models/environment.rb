@@ -3,6 +3,7 @@ class Environment < ActiveRecord::Base
   has_many :territories
   has_many :region_environments
   has_many :user_environments
+  has_many :assigned_staff
 
   serialized_accessor :config, :enable_dsars, :boolean
   serialized_accessor :config, :enable_sitreps, :boolean
@@ -10,6 +11,7 @@ class Environment < ActiveRecord::Base
   serialized_accessor :config, :enable_cop, :boolean
   serialized_accessor :config, :enable_iap, :boolean
   serialized_accessor :config, :time_zone_raw, :string
+  serialized_accessor :config, :vc_incident_number, :integer
 
   def self.active
     where{enabled == true}

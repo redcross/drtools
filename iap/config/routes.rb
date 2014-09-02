@@ -1,6 +1,16 @@
 Iap::Engine.routes.draw do
   scope ':environment_id', as: :environment do
+
     resources :plans, path: 'iap' do
+      collection do
+        resources :recipients, except: :show do
+          collection do
+            get :addresses
+          end
+        end
+      end
+
+      resource :distribution, only: [:new, :create]
       resource :approval, only: [:new, :create, :destroy]
       resources :planning_worksheets
       resources :work_assignments do

@@ -12,8 +12,7 @@
       %td
         =resource.period_start.try(:to_s, :date_time)
       %td
-        - resource.plan_attachments.each do |att|
-          =link_to att.title, att.file.expiring_url
+        =safe_join resource.plan_attachments.map{|att| link_to att.title, att.file.expiring_url}, tag(:br)
       %td
         = resource.approver_name
         = resource.approver_title

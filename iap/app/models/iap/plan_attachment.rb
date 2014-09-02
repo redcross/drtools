@@ -7,7 +7,7 @@ module Iap
     #validates :file, presence: true
 
     assignable_values_for :audience do
-      %w(all internal)
+      %w(all internal leadership)
     end
 
     assignable_values_for :attachment_type do

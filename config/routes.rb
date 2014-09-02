@@ -16,6 +16,8 @@ DRTools::Application.routes.draw do
 
   root to: 'root#index'
 
-  resources '', as: :environments, controller: 'environments', only: :show
+  resources '', as: :environments, controller: 'environments', only: :show do
+    resources :assigned_staff
+  end
 
 end

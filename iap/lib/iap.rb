@@ -8,6 +8,7 @@ require 'prawn'
 require 'prawn/templates'
 require 'cocoon'
 require 'httparty'
+require 'haml'
 
 module Iap
 end

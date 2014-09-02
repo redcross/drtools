@@ -10,6 +10,10 @@ module Iap
 
     protected
 
+    def previous_plan
+      @previous_plan ||= collection.order{number.desc}.first
+    end
+
     def require_draft_plan
       if resource.approved?
         flash[:error] = "This IAP is approved and cannot be edited."
@@ -36,6 +40,14 @@ module Iap
       super.tap{|res|
         res.number ||= next_plan_number
         res.status ||= 'draft'
+
+        previous_plan.work_assignments.each{|wa| 
+          new_wa = wa.duplicate
+          new_wa.created_at = nil
+          new_wa.prepared_by_name = nil
+          new_wa.prepared_by_title = nil
+          res.work_assignments << new_wa
+        }
       }
     end
 

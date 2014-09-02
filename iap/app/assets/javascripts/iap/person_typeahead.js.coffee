@@ -12,9 +12,9 @@ class window.PersonTypeaheadController
 
     dsOpts =
       name: 'people'
-      displayKey: 'full_name'
+      displayKey: 'name'
       templates:
-        suggestion: ((ctx) -> ph = ctx['phones'][0] || {}; "<p>#{ctx.full_name}<br />#{ph? && ph['number']}</p>")
+        suggestion: ((ctx) -> "<p>#{ctx.name}<br />#{ctx.primary_phone}</p>")
       source: (query, process) =>
         if query.length <= 2
           process([])
@@ -49,4 +49,4 @@ class window.PersonTypeaheadController
     $(@taDom).typeahead taOpts, dsOpts
     $(@taDom).on 'typeahead:selected', (evt, datum) =>
       console.log evt, evt.target, evt.target.value
-      $(@phoneDom).val(datum['phones'][0]['number']);
+      $(@phoneDom).val(datum['primary_phone']);

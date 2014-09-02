@@ -6,6 +6,7 @@ gem 'rails', '4.0.3'
 gem 'puma'
 gem 'squeel', github: 'ernie/squeel'
 gem 'activerecord-postgresql-adapter'
+gem 'activerecord-import'
 
 gem 'formtastic', '>=2.3.0rc2'
 gem 'formtastic-bootstrap', '~> 3.0'
@@ -20,6 +21,8 @@ gem 'bootstrap-x-editable-rails'
 gem 'sass-rails', '~> 4.0.0'
 gem 'less-rails'
 gem 'therubyracer'
+
+gem 'jbuilder'
 
 gem 'jquery-ui-rails'
 

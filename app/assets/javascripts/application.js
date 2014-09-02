@@ -15,6 +15,8 @@
 //= require jquery.ui.all
 //= require typeahead.bundle
 //= require twitter/bootstrap
+//= require bootstrap3-editable/bootstrap-editable
+//= require ./bootstrap-editable-rails
 //= require bootstrap
 //= require cocoon
 //= require iap/application

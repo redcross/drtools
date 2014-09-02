@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827203815) do
+ActiveRecord::Schema.define(version: 20140902164812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 20140827203815) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "assigned_staff", force: true do |t|
+    t.integer  "environment_id"
+    t.string   "name"
+    t.string   "cell_phone"
+    t.string   "home_phone"
+    t.string   "work_phone"
+    t.string   "email"
+    t.string   "gap"
+    t.integer  "member_number"
+    t.integer  "vc_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assigned_staff", ["environment_id"], name: "index_assigned_staff_on_environment_id", using: :btree
 
   create_table "dashboard_service_delivery_plans", force: true do |t|
     t.integer  "environment_id"
@@ -241,6 +257,18 @@ ActiveRecord::Schema.define(version: 20140827203815) do
 
   add_index "iap_plans", ["environment_id"], name: "index_iap_plans_on_environment_id", using: :btree
 
+  create_table "iap_recipients", force: true do |t|
+    t.integer  "environment_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "recipient_type"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iap_recipients", ["environment_id"], name: "index_iap_recipients_on_environment_id", using: :btree
+
   create_table "iap_subscriptions", force: true do |t|
     t.integer  "environment_id"
     t.integer  "user_id"
@@ -353,6 +381,14 @@ ActiveRecord::Schema.define(version: 20140827203815) do
 
   add_index "sitreps_sitreps", ["creator_id"], name: "index_sitreps_sitreps_on_creator_id", using: :btree
   add_index "sitreps_sitreps", ["environment_id"], name: "index_sitreps_sitreps_on_environment_id", using: :btree
+
+  create_table "staff_contact_overrides", force: true do |t|
+    t.integer  "vc_member_number"
+    t.string   "email_override"
+    t.string   "phone_override"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "territories", force: true do |t|
     t.integer  "environment_id"

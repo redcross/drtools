@@ -1,0 +1,23 @@
+%h1
+  #{current_environment.name} Distribution List
+
+%p
+  Names/emails on this list will be added to the IAP distribution list.  Do not include those assigned to the DRO - they will included automatically.
+
+%table.table.table-condensed
+  %tr
+    %th Name
+    %th Email
+    %th Type
+    %th Notes
+    %th Actions
+  - collection.each do |resource|
+    %tr
+      %td=resource.name
+      %td=resource.email
+      %td=resource.humanized_recipient_type
+      %td=resource.notes
+      %td
+        =link_to "Edit", edit_resource_path(resource)
+        =link_to "Delete", resource_path(resource), method: :delete, data: {confirm: 'Really Destroy?'}
+=link_to 'Add Recipient', new_resource_path, class: 'btn btn-primary'
