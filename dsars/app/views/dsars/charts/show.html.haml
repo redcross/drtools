@@ -1,31 +1,34 @@
-#chart(style="position: absolute; width: 100%; bottom: 0%; top: 0; right: 0px")
+- @lines.each do |line|
+  //%h1=line.chart_title
+  .chart{id: "line-#{line.line_description.line_number}", style: "width: 100%; height: 300px"}
 
 
 = javascript_include_tag "//code.highcharts.com/highcharts.js"
 = javascript_include_tag "//code.highcharts.com/highcharts-more.js"
 
-:javascript
-  $('#chart').highcharts({
-    chart: { type: 'areaspline' },
-    title: {text: #{chart_title.to_json}},
-    xAxis: {
-      type: 'datetime',
-    },
-    //plotOptions: {areaspline: {stacking: 'normal'}},
-    ayAxis: [{
-      opposite: true, 
-      title: {enabled: false}, 
-      allowDecimals: false,
-      }, {title: {enabled: false}}],
-    series: [
-      { 
-        name: 'Total', data: #{series_data :total},
+- @lines.each do |line|
+  :javascript
+    $('#line-#{line.line_description.line_number}').highcharts({
+      chart: { type: 'areaspline' },
+      title: {text: #{line.chart_title.to_json}},
+      xAxis: {
+        type: 'datetime',
       },
-      { 
-        name: 'Period', data: #{series_data :period},
+      //plotOptions: {areaspline: {stacking: 'normal'}},
+      ayAxis: [{
+        opposite: true, 
+        title: {enabled: false}, 
+        allowDecimals: false,
+        }, {title: {enabled: false}}],
+      series: [
+        { 
+          name: 'Total', data: #{line.series_data :total},
+        },
+        { 
+          name: 'Period', data: #{line.series_data :period},
+        },
+      ],
+      credits: {
+        enabled: false
       },
-    ],
-    credits: {
-      enabled: false
-    },
-  });
+    });
