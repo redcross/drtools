@@ -27,4 +27,20 @@ class AssignedStaff < ActiveRecord::Base
     build_staff_contact_override unless staff_contact_override
     staff_contact_override.phone_override = new_phone
   end
+
+  def gap_split
+    @gap_split ||= (gap || '').split '/'
+  end
+
+  def group
+    gap_split[0]
+  end
+
+  def activity
+    gap_split[1]
+  end
+
+  def position
+    gap_split[2]
+  end
 end

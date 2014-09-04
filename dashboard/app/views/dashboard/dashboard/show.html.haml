@@ -97,7 +97,6 @@
         %td=chart_link 40, total_value( 40)
         %td=chart_link 44, period_value( 44)
         %td=chart_link 44, total_value( 44)
-  .col-md-6
     %h3 Mass Care
     %table.table.table-bordered.table-striped
       %tr
@@ -120,6 +119,19 @@
         %th Meals Served
         %td=chart_link 18, period_value(18)
         %td=chart_link 18, total_value( 18)
+  .col-md-6
+    %h3 By GAP
+    %table.table.table-bordered.table-striped
+      %tr
+        %th Group
+        %th Count
+      - ['OM', 'CLS/CC', 'CLS/HS', 'CLS/DMH', 'MC', 'LOG', 'ER', 'DST', 'IP', 'SS'].each do |group|
+        %tr
+          %th=group
+          %td=assigned_staff_by_gap[group].count
+      %tr
+        %th Total (current)
+        %td=current_environment.assigned_staff.count
 -if current_ability.role? Roles::Dsars::FINANCIALS
   .row
     .col-md-12
@@ -188,3 +200,40 @@
               =number_to_currency @sdp.approved_budget, precision: 0
             -else
               No SDP On File
+  .row
+    .col-sm-12
+      %h3 Service Delivery Efficiency
+      =form_tag '', method: :get do
+        %table.table.table-bordered.table-striped
+          %tr
+            %th Metric
+            %th Period
+            %th Total
+            %th $ Weight
+            %th 
+              $ Efficiency
+              %br
+              %small Indirect Dollars per Service
+            %th
+              Current Staff Efficiency
+              %br
+              %small Services per Period Staff
+          - efficiency_model.each do |name, model|
+            - param = name.to_param
+            - weight = weight(name, model)
+            - this_weight = weight * total_value(model[:line], 0)
+            - this_total_val = 
+            - line = model[:line]
+            %tr
+              %th
+                =name
+              %td=period_value(line)
+              %td=total_value(line)
+              %td
+                =text_field_tag param, weight, style: "width: 4em", class: 'form-control input-sm'
+              %td=number_to_currency (total_indirect * (this_weight.to_f / total_weight.to_f) / total_value(line, period_value(line)))
+              %td=number_with_precision(period_value(model[:line], 0).to_f / assigned_staff_by_gap[model[:gap]].count, precision: 2)
+          %tr
+            %td(colspan="3")
+            %td=submit_tag 'Update', class: 'btn btn-default btn-sm'
+            %td(colspan="2")

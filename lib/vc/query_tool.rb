@@ -37,9 +37,13 @@ module Vc
       raise exception if exception
     end
 
-    def get_query_list
+    def fetch_query_list
       logger.info "Getting query list..."
       resp = self.get '/', query: {nd: 'vms_unit_query_list'}
+    end
+
+    def get_query_list
+      resp = fetch_query_list
 
       page = Nokogiri::HTML(resp.body)
       list = {}
