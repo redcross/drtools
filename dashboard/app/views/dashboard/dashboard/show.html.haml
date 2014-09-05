@@ -219,11 +219,11 @@
               %br
               %small Services per Period Staff
           - efficiency_model.each do |name, model|
+            - line = model[:line]
             - param = name.to_param
             - weight = weight(name, model)
             - this_weight = weight * total_value(model[:line], 0)
-            - this_total_val = 
-            - line = model[:line]
+            - this_total_val = total_value(line)
             %tr
               %th
                 =name
@@ -231,8 +231,12 @@
               %td=total_value(line)
               %td
                 =text_field_tag param, weight, style: "width: 4em", class: 'form-control input-sm'
-              %td=number_to_currency (total_indirect * (this_weight.to_f / total_weight.to_f) / total_value(line, period_value(line)))
-              %td=number_with_precision(period_value(model[:line], 0).to_f / assigned_staff_by_gap[model[:gap]].count, precision: 2)
+              - apportioned = (overhead * (this_weight.to_f / total_weight.to_f)) + model[:cost_basis].map{|l| total_value(l, 0)}.sum
+              - eff = apportioned / (this_total_val || 0.0)
+              %td=number_to_currency eff
+              %td
+                =number_with_precision(period_value(model[:line], 0).to_f / assigned_staff_by_gap[model[:gap]].count, precision: 2)
+                %small #{model[:noun]} per staff in #{model[:gap]}
           %tr
             %td(colspan="3")
             %td=submit_tag 'Update', class: 'btn btn-default btn-sm'

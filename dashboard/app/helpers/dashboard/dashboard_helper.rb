@@ -38,12 +38,16 @@ module Dashboard
 
     def efficiency_model
       {
-        "Shelter Overnight Stays" => {line: 17, default_weight: 10, gap: 'MC'},
-        "Health Services Contacts" => {line: 75, default_weight: 40, gap: 'CLS/HS'},
-        "Mental Health Contacts" => {line: 79, default_weight: 40, gap: 'CLS/DMH'},
-        "Cases Open" => {line: 60, default_weight: 5, gap: 'MC'},
-        "Individual Financial Assistance" => {line: 92, default_weight: 0.1, gap: 'CLS'}
+        "Shelter Overnight Stays" => {line: 17, default_weight: 10, gap: 'MC', cost_basis: [124], noun: 'stays'},
+        "Health Services Contacts" => {line: 75, default_weight: 40, gap: 'CLS/HS', cost_basis: [99,113], noun: 'contacts'},
+        "Mental Health Contacts" => {line: 79, default_weight: 40, gap: 'CLS/DMH', cost_basis: [100, 114], noun: 'contacts'},
+        "Cases Open" => {line: 60, default_weight: 5, gap: 'CLS/CC', cost_basis: [98, 112], noun: 'open cases'},
+        "Individual Financial Assistance" => {line: 92, default_weight: 0.1, gap: 'CLS/CC', cost_basis: [98, 112], noun: 'dollars provided'}
       }
+    end
+
+    def overhead
+      @overhead ||= [132, 133, 103, 117, 137, 138, 139, 140].map{|line| total_value(line, 0) }.sum
     end
 
     def total_weight
