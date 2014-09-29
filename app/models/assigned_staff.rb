@@ -15,7 +15,7 @@ class AssignedStaff < ActiveRecord::Base
   end
 
   def primary_phone
-    staff_contact_override.try(:phone_override) || cell_phone || home_phone || work_phone
+    staff_contact_override.try(:phone_override).presence || cell_phone.presence || home_phone.presence || work_phone.presence
   end
 
   def primary_email= new_email
