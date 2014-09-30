@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params [:region_id]
+  permit_params [:region_id, :role_strings => []]
 
   actions :all
 
