@@ -1,0 +1,22 @@
+%table.table.table-condensed
+  %thead
+    %tr
+      %th Name
+      %th Mem #
+      %th GAP
+      %th 204 Assignment
+      %th Current Work Location
+      %th New Work Location
+  - collection.each do |title, list|
+    %tbody
+      %tr(colspan="6")
+        %th=title
+      - list.each do |record|
+        %tr
+          %td=record.person.name
+          %td=record.person.member_number
+          %td=record.person.gap
+          %td
+            =safe_join [record.work_assignment.resource_identifier, record.work_assignment.work_assignment.group, record.work_assignment.work_assignment.activity, record.work_assignment.work_assignment.district], tag(:br)
+          %td=record.old_location
+          %td=record.new_location

@@ -14,6 +14,8 @@ module Iap
     before_filter :set_content_disposition
     before_filter :authenticate_oauth!, only: [:upload, :perform_upload]
 
+    helper WorkLocationHelper
+
     def smart_resource_url
       edit_resource_path
     end
@@ -65,7 +67,7 @@ module Iap
     end
 
     def build_resource_params
-      [params.fetch(:work_assignment, {}).permit(:group, :activity, :district, :section_chief_name, :section_chief_phone,
+      [params.fetch(:work_assignment, {}).permit(:group, :activity, :district, :work_location, :section_chief_name, :section_chief_phone,
               :activity_manager_phone, :activity_manager_name, :supervisor_name, :supervisor_phone, :work_assignments,
               :special_instructions, :prepared_by_name, :prepared_by_title,
               work_assignment_lines_attributes: [:resource_identifier, :leader, :num_persons, :contact, :reporting_location, :ordinal, :_destroy, :id])]

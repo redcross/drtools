@@ -24,7 +24,7 @@ class GetAssignedStaffJob
     data.each do |row|
       member_number = @member_numbers[row[16]]
       next unless member_number.present?
-      to_import << AssignedStaff.new(environment_id: environment.id, member_number: member_number, name: row[17], home_phone: row[24], work_phone: row[25], cell_phone: row[26], email: row[29], gap: row[30])
+      to_import << AssignedStaff.new(environment_id: environment.id, member_number: member_number, name: row[17], work_location: row[20], home_phone: row[24], work_phone: row[25], cell_phone: row[26], email: row[29], gap: row[30])
     end
 
     AssignedStaff.transaction do

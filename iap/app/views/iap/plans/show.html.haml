@@ -19,6 +19,10 @@
       =link_to environment_plan_work_assignments_path(parent, resource) do
         View #{resource.work_assignments.count} forms
   %tr
+    %th Work Location Verification Report
+    %td
+      =link_to 'View', environment_plan_work_location_verification_path(parent, resource)
+  %tr
     %th Status
     %td=resource.humanized_status
   %tr

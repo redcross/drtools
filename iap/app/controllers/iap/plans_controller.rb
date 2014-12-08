@@ -41,13 +41,17 @@ module Iap
         res.number ||= next_plan_number
         res.status ||= 'draft'
 
-        previous_plan.work_assignments.each{|wa| 
-          new_wa = wa.duplicate
-          new_wa.created_at = nil
-          new_wa.prepared_by_name = nil
-          new_wa.prepared_by_title = nil
-          res.work_assignments << new_wa
-        }
+        if previous_plan
+          previous_plan.work_assignments.each{|wa| 
+            new_wa = wa.duplicate
+            new_wa.created_at = nil
+            new_wa.prepared_by_name = nil
+            new_wa.prepared_by_title = nil
+            res.work_assignments << new_wa
+          }
+          res.period_start = previous_plan.period_end
+          res.period_end = res.period_start + (previous_plan.period_end - previous_plan.period_start)
+        end
       }
     end
 

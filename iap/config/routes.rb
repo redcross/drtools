@@ -22,6 +22,8 @@ Iap::Engine.routes.draw do
         end
       end
 
+      resource :work_location_verification, controller: :work_location_verification
+
       resources :attachments, controller: :plan_attachments do
         collection do
           get 'new/upload', action: 'new_upload', as: :new_upload

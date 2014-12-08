@@ -1,0 +1,6 @@
+%h1 Work Location Verification
+
+%h3 Staff moving by new work location
+=render 'table', collection: resource.mismatched_staff.group_by(&:new_location)
+%h3 Staff moving by old work location
+=render 'table', collection: resource.mismatched_staff.group_by(&:old_location)

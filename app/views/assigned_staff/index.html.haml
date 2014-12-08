@@ -8,16 +8,18 @@
 %table.table.table-condensed
   %tr
     %th Name
-    %th Member Number
     %th Primary Email
     %th Primary Phone
     %th Main Email
     %th Phones
     %th GAP
+    %th Work Location
   - collection.each do |staff|
     %tr
-      %td=staff.name
-      %td=staff.member_number
+      %td
+        =staff.name
+        %br
+        =staff.member_number
       %td=editable_string staff, :primary_email, editable: true, url: resource_path(staff)
       %td=editable_string staff, :primary_phone, editable: true, url: resource_path(staff)
       %td{style: "text-overflow: ellipsis"}=staff.email
@@ -32,3 +34,4 @@
           W:
           =staff.work_phone
       %td=staff.gap
+      %td=staff.work_location

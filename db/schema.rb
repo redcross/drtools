@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902164812) do
+ActiveRecord::Schema.define(version: 20141208031820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140902164812) do
     t.integer  "vc_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "work_location"
   end
 
   add_index "assigned_staff", ["environment_id"], name: "index_assigned_staff_on_environment_id", using: :btree
@@ -238,6 +239,7 @@ ActiveRecord::Schema.define(version: 20140902164812) do
     t.string   "activity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "work_location"
   end
 
   add_index "iap_planning_worksheets", ["plan_id"], name: "index_iap_planning_worksheets_on_plan_id", using: :btree
@@ -314,6 +316,7 @@ ActiveRecord::Schema.define(version: 20140902164812) do
     t.datetime "prepared_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "work_location"
   end
 
   add_index "iap_work_assignments", ["plan_id"], name: "index_iap_work_assignments_on_plan_id", using: :btree

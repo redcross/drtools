@@ -26,6 +26,9 @@
         %br
         =f.label :district, 'District:'
         =f.text_field :district
+        .hidden-print
+          =f.label :work_location, 'Work Location:'
+          =f.select :work_location, work_locations(parent.environment), include_blank: true
     %tr
       %td.table-nested-container(colspan="2" style="border-top: 0")
         %table.table.table-nested.personnel-table
